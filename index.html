@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriSmart - Votre coach nutrition intelligent</title>
+    <meta name="description" content="Mangez mieux sans vous priver. Une approche personnalisée pour retrouver l'équilibre entre plaisir, santé et performance.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+        }
+        
+        .container-custom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #10B981 0%, #3B82F6 100%);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #10B981 0%, #3B82F6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .two-column-layout {
+            display: grid;
+            grid-template-columns: 55% 45%;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        @media (max-width: 968px) {
+            .two-column-layout {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .mobile-order-1 {
+                order: 1;
+            }
+            
+            .mobile-order-2 {
+                order: 2;
+            }
+        }
+        
+        .benefit-card {
+            background: white;
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            margin-bottom: 24px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .benefit-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #10B981 0%, #3B82F6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #E5E7EB;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.2s;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #10B981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+        
+        .cta-button {
+            width: 100%;
+            height: 56px;
+            background: linear-gradient(135deg, #10B981 0%, #3B82F6 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(16, 185, 129, 0.4);
+        }
+        
+        .cta-button:disabled {
+            background: #9CA3AF;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .mockup-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .mockup-phone {
+            width: 100%;
+            max-width: 320px;
+            border-radius: 32px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .mockup-phone:hover {
+            transform: scale(1.02);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Lightbox Modal */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
+        
+        .lightbox.active {
+            display: flex;
+        }
+        
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 32px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin: 60px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+        }
+        
+        .stat-card {
+            text-align: center;
+            padding: 24px;
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #10B981 0%, #3B82F6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        
+        .stat-label {
+            font-size: 16px;
+            color: #6B7280;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200">
+        <div class="container-custom py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold gradient-text">🥗 NutriSmart</div>
+            <a href="#waitlist" class="text-sm font-semibold text-gray-700 hover:text-green-600 transition">
+                Rejoindre la beta
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-20">
+        <div class="container-custom text-center">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                Mangez mieux, vivez mieux
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 opacity-90 max-w-3xl mx-auto">
+                Une approche personnalisée pour retrouver l'équilibre entre plaisir, santé et performance
+            </p>
+            <a href="#waitlist" class="inline-block bg-white text-green-600 px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl transition transform hover:scale-105">
+                Commencer gratuitement
+            </a>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="container-custom">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Personnalisé</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">0€</div>
+                <div class="stat-label">Pour commencer</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Suivi intelligent</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container-custom py-16">
+        <div class="two-column-layout">
+            <!-- Left Column - Benefits -->
+            <div class="mobile-order-2">
+                <h2 class="text-4xl font-bold mb-12 text-gray-900">
+                    Votre coach nutrition intelligent
+                </h2>
+
+                <!-- Benefit 1 -->
+                <div class="benefit-card">
+                    <div class="benefit-icon">🍽️</div>
+                    <h3 class="text-2xl font-bold mb-3 text-gray-900">
+                        Manger mieux, sans se priver
+                    </h3>
+                    <p class="text-gray-600 text-lg">
+                        Découvrez comment allier plaisir et nutrition. Pas de régime restrictif, juste des choix éclairés adaptés à vos goûts.
+                    </p>
+                </div>
+
+                <!-- Benefit 2 -->
+                <div class="benefit-card">
+                    <div class="benefit-icon">🧠</div>
+                    <h3 class="text-2xl font-bold mb-3 text-gray-900">
+                        Comprendre les besoins de votre corps
+                    </h3>
+                    <p class="text-gray-600 text-lg">
+                        Une approche personnalisée et intelligente qui s'adapte à votre métabolisme, votre activité et vos objectifs.
+                    </p>
+                </div>
+
+                <!-- Benefit 3 -->
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚖️</div>
+                    <h3 class="text-2xl font-bold mb-3 text-gray-900">
+                        Retrouver l'équilibre
+                    </h3>
+                    <p class="text-gray-600 text-lg">
+                        L'harmonie parfaite entre plaisir, santé et performance. Votre bien-être global est notre priorité.
+                    </p>
+                </div>
+
+                <!-- Social Proof -->
+                <div class="mt-12 p-6 bg-green-50 rounded-xl border-2 border-green-100">
+                    <p class="text-sm text-green-800 font-semibold">
+                        ✨ Rejoignez les 500+ personnes qui ont déjà transformé leur alimentation
+                    </p>
+                </div>
+            </div>
+
+            <!-- Right Column - Mockup & Form -->
+            <div class="mobile-order-1">
+                <!-- Mockup -->
+                <div class="mockup-container mb-12">
+                    <img src="mockup-mobile.png" 
+                         alt="Aperçu de l'application NutriSmart" 
+                         class="mockup-phone"
+                         onclick="openLightbox()"
+                         onkeydown="if(event.key==='Enter') openLightbox()"
+                         tabindex="0"
+                         role="button"
+                         aria-label="Agrandir l'aperçu de l'application">
+                </div>
+
+                <!-- Waitlist Form -->
+                <div id="waitlist" class="bg-white p-8 rounded-2xl shadow-xl">
+                    <h3 class="text-2xl font-bold mb-2 text-gray-900">
+                        Rejoignez la beta privée
+                    </h3>
+                    <p class="text-gray-600 mb-6">
+                        Soyez parmi les premiers à tester NutriSmart
+                    </p>
+                    
+                    <form id="waitlistForm" action="#" method="POST">
+                        <div class="mb-4">
+                            <label for="fullName" class="block text-sm font-semibold mb-2 text-gray-700">
+                                Prénom et Nom *
+                            </label>
+                            <input type="text" 
+                                   id="fullName" 
+                                   name="fullName" 
+                                   required 
+                                   class="form-input"
+                                   placeholder="Marie Dupont">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="email" class="block text-sm font-semibold mb-2 text-gray-700">
+                                Email *
+                            </label>
+                            <input type="email" 
+                                   id="email" 
+                                   name="email" 
+                                   required 
+                                   class="form-input"
+                                   placeholder="marie@exemple.com">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="goal" class="block text-sm font-semibold mb-2 text-gray-700">
+                                Votre objectif principal *
+                            </label>
+                            <select id="goal" 
+                                    name="goal" 
+                                    required 
+                                    class="form-input">
+                                <option value="">Sélectionnez...</option>
+                                <option value="sante">Améliorer ma santé globale</option>
+                                <option value="energie">Avoir plus d'énergie</option>
+                                <option value="poids">Gérer mon poids</option>
+                                <option value="performance">Optimiser mes performances</option>
+                                <option value="autre">Autre</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-6">
+                            <label class="flex items-start gap-3 cursor-pointer">
+                                <input type="checkbox" 
+                                       id="consent" 
+                                       name="consent" 
+                                       required 
+                                       class="mt-1 w-5 h-5 text-green-600 border-gray-300 rounded focus:ring-green-500">
+                                <span class="text-sm text-gray-600">
+                                    J'accepte de recevoir des informations sur la beta de NutriSmart *
+                                </span>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="cta-button">
+                            Rejoindre la liste d'attente
+                        </button>
+
+                        <p class="text-xs text-center mt-4 text-gray-500">
+                            Gratuit et sans engagement. Désabonnement possible à tout moment.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 py-8 mt-20">
+        <div class="container-custom text-center">
+            <p class="text-sm text-gray-500">
+                © 2025 NutriSmart | RGPD | alexandre.petit.qin@gmail.com
+            </p>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" 
+         class="lightbox" 
+         onclick="closeLightbox()"
+         onkeydown="if(event.key==='Escape') closeLightbox()"
+         role="dialog"
+         aria-modal="true"
+         aria-label="Aperçu en plein écran">
+        <img src="mockup-mobile.png" alt="Aperçu de l'application NutriSmart">
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Lightbox functions
+        function openLightbox() {
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close lightbox with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+        
+        // Configuration Google Apps Script
+        // TODO: Remplacer par votre URL Google Apps Script
+        const GOOGLE_SCRIPT_URL = 'VOTRE_URL_ICI';
+        
+        // Form handling
+        document.getElementById('waitlistForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Désactiver le bouton pendant l'envoi
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            submitButton.disabled = true;
+            submitButton.textContent = 'Envoi en cours...';
+            
+            // Collect form data
+            const formData = {
+                fullName: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                goal: document.getElementById('goal').value,
+                consent: document.getElementById('consent').checked,
+                timestamp: new Date().toISOString()
+            };
+            
+            try {
+                // Pour l'instant, juste un log (à remplacer par l'appel Google Script)
+                console.log('Form submitted:', formData);
+                
+                // Show success message
+                alert('Merci ! Vous avez été ajouté à la liste d\'attente. Nous vous contacterons bientôt pour la beta.');
+                
+                // Reset form
+                this.reset();
+                
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Une erreur est survenue. Veuillez réessayer ou nous contacter directement.');
+            } finally {
+                // Réactiver le bouton
+                submitButton.disabled = false;
+                submitButton.textContent = originalText;
+            }
+        });
+    </script>
+</body>
+</html>
