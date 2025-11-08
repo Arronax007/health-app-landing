@@ -3,15 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NutriSmart - Votre coach nutrition intelligent</title>
-    <meta name="description" content="Mangez mieux sans vous priver. Une approche personnalisée pour retrouver l'équilibre entre plaisir, santé et performance.">
+    <title>Votre compagnon nutrition - Mangez mieux, sans vous priver</title>
+    <meta name="description" content="Trouvez l'équilibre parfait entre plaisir et santé grâce à des suggestions simples, personnalisées et adaptées à votre rythme de vie.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            color: #2C3E2E;
+        }
+        
+        /* Couleurs vert sauge + beige */
+        :root {
+            --sage-green: #8B9D83;
+            --sage-green-light: #A8B89F;
+            --sage-green-dark: #6B7D63;
+            --beige: #F5F1E8;
+            --beige-dark: #E8E2D5;
+            --text-dark: #2C3E2E;
+            --text-medium: #5A6B5C;
         }
         
         .container-custom {
@@ -20,126 +32,284 @@
             padding: 0 20px;
         }
         
-        .gradient-bg {
-            background: linear-gradient(135deg, #10B981 0%, #3B82F6 100%);
+        .sage-bg {
+            background-color: var(--sage-green);
         }
         
-        .gradient-text {
-            background: linear-gradient(135deg, #10B981 0%, #3B82F6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .beige-bg {
+            background-color: var(--beige);
         }
         
-        .two-column-layout {
-            display: grid;
-            grid-template-columns: 55% 45%;
-            gap: 60px;
-            align-items: center;
+        .sage-text {
+            color: var(--sage-green);
         }
         
-        @media (max-width: 968px) {
-            .two-column-layout {
-                grid-template-columns: 1fr;
-                gap: 40px;
+        /* Header */
+        .header {
+            background: white;
+            border-bottom: 1px solid var(--beige-dark);
+        }
+        
+        .logo-img {
+            height: 48px;
+            width: auto;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--beige) 0%, #FFFFFF 100%);
+            padding: 80px 0;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-medium);
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
             }
-            
-            .mobile-order-1 {
-                order: 1;
-            }
-            
-            .mobile-order-2 {
-                order: 2;
+            .hero-subtitle {
+                font-size: 1.1rem;
             }
         }
         
+        /* CTA Button */
+        .cta-button {
+            background-color: var(--sage-green);
+            color: white;
+            padding: 16px 48px;
+            border-radius: 50px;
+            font-size: 1.125rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--sage-green-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(139, 157, 131, 0.3);
+        }
+        
+        .cta-button-secondary {
+            background-color: white;
+            color: var(--sage-green);
+            border: 2px solid var(--sage-green);
+        }
+        
+        .cta-button-secondary:hover {
+            background-color: var(--beige);
+        }
+        
+        /* Benefits Section */
         .benefit-card {
             background: white;
-            padding: 32px;
-            border-radius: 16px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 40px;
+            border-radius: 20px;
+            border: 2px solid var(--beige-dark);
             margin-bottom: 24px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
         }
         
         .benefit-card:hover {
+            border-color: var(--sage-green-light);
+            box-shadow: 0 10px 30px rgba(139, 157, 131, 0.15);
             transform: translateY(-4px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
         
         .benefit-icon {
-            width: 56px;
-            height: 56px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, #10B981 0%, #3B82F6 100%);
+            width: 64px;
+            height: 64px;
+            background-color: var(--beige);
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 32px;
             margin-bottom: 20px;
-            font-size: 28px;
+        }
+        
+        .benefit-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+        
+        .benefit-text {
+            font-size: 1.05rem;
+            color: var(--text-medium);
+            line-height: 1.6;
+        }
+        
+        /* How It Works Section */
+        .how-it-works {
+            background-color: var(--beige);
+            padding: 80px 0;
+        }
+        
+        .step-card {
+            background: white;
+            padding: 32px;
+            border-radius: 16px;
+            border: 2px solid var(--beige-dark);
+            text-align: center;
+            height: 100%;
+        }
+        
+        .step-number {
+            width: 56px;
+            height: 56px;
+            background-color: var(--sage-green);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+        
+        .step-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+        
+        .step-text {
+            font-size: 1rem;
+            color: var(--text-medium);
+            line-height: 1.5;
+        }
+        
+        /* FAQ Section */
+        .faq-item {
+            background: white;
+            padding: 32px;
+            border-radius: 16px;
+            border: 2px solid var(--beige-dark);
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            border-color: var(--sage-green-light);
+        }
+        
+        .faq-question {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-answer {
+            font-size: 1.05rem;
+            color: var(--text-medium);
+            line-height: 1.6;
+            margin-top: 16px;
+            display: none;
+        }
+        
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        
+        .faq-icon {
+            font-size: 1.5rem;
+            color: var(--sage-green);
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+        
+        /* Form Section */
+        .form-container {
+            background: white;
+            padding: 48px;
+            border-radius: 24px;
+            border: 2px solid var(--beige-dark);
+            box-shadow: 0 10px 40px rgba(139, 157, 131, 0.1);
         }
         
         .form-input {
             width: 100%;
-            padding: 14px 18px;
-            border: 2px solid #E5E7EB;
-            border-radius: 10px;
-            font-size: 16px;
+            padding: 16px 20px;
+            border: 2px solid var(--beige-dark);
+            border-radius: 12px;
+            font-size: 1rem;
             transition: border-color 0.2s;
+            background-color: var(--beige);
         }
         
         .form-input:focus {
             outline: none;
-            border-color: #10B981;
-            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+            border-color: var(--sage-green);
+            background-color: white;
         }
         
-        .cta-button {
+        .form-button {
             width: 100%;
-            height: 56px;
-            background: linear-gradient(135deg, #10B981 0%, #3B82F6 100%);
+            padding: 18px;
+            background-color: var(--sage-green);
             color: white;
             border: none;
-            border-radius: 10px;
-            font-size: 18px;
+            border-radius: 12px;
+            font-size: 1.125rem;
             font-weight: 700;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: all 0.3s ease;
         }
         
-        .cta-button:hover {
+        .form-button:hover {
+            background-color: var(--sage-green-dark);
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px -5px rgba(16, 185, 129, 0.4);
         }
         
-        .cta-button:disabled {
-            background: #9CA3AF;
+        .form-button:disabled {
+            background-color: #D1D5DB;
             cursor: not-allowed;
             transform: none;
         }
         
-        .mockup-container {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
+        /* Mockup */
         .mockup-phone {
             width: 100%;
             max-width: 320px;
             border-radius: 32px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 20px 50px rgba(44, 62, 46, 0.15);
             cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease;
         }
         
         .mockup-phone:hover {
             transform: scale(1.02);
-            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.3);
         }
         
-        /* Lightbox Modal */
+        /* Lightbox */
         .lightbox {
             display: none;
             position: fixed;
@@ -147,7 +317,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(44, 62, 46, 0.95);
             z-index: 1000;
             justify-content: center;
             align-items: center;
@@ -165,161 +335,276 @@
             border-radius: 32px;
         }
         
-        .stats-grid {
+        /* Social Proof */
+        .social-proof {
+            background-color: #F0F4EF;
+            border: 2px solid var(--sage-green-light);
+            padding: 24px;
+            border-radius: 16px;
+            text-align: center;
+        }
+        
+        .social-proof-text {
+            color: var(--sage-green-dark);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        
+        /* Grid Layouts */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .three-column {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 32px;
-            margin: 60px 0;
         }
         
-        @media (max-width: 768px) {
-            .stats-grid {
+        @media (max-width: 968px) {
+            .two-column {
                 grid-template-columns: 1fr;
-                gap: 24px;
+            }
+            
+            .three-column {
+                grid-template-columns: 1fr;
             }
         }
         
-        .stat-card {
+        /* Section Spacing */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-benefits {
+            background-image: url('temporaryLogo.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+        
+        .section-benefits::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.92);
+            z-index: 1;
+        }
+        
+        .section-benefits > * {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
             text-align: center;
-            padding: 24px;
+            margin-bottom: 60px;
         }
         
-        .stat-number {
-            font-size: 48px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #10B981 0%, #3B82F6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 8px;
-        }
-        
-        .stat-label {
-            font-size: 16px;
-            color: #6B7280;
+        @media (max-width: 768px) {
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 40px;
+            }
         }
     </style>
 </head>
-<body class="bg-gray-50">
+<body>
     <!-- Header -->
-    <header class="bg-white border-b border-gray-200">
+    <header class="header">
         <div class="container-custom py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold gradient-text">🥗 NutriSmart</div>
-            <a href="#waitlist" class="text-sm font-semibold text-gray-700 hover:text-green-600 transition">
+            <div class="text-2xl font-bold sage-text">🌿 Votre compagnon nutrition</div>
+            <a href="#waitlist" class="text-sm font-semibold sage-text hover:opacity-70 transition">
                 Rejoindre la beta
             </a>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="gradient-bg text-white py-20">
+    <section class="hero">
         <div class="container-custom text-center">
-            <h1 class="text-5xl md:text-6xl font-bold mb-6">
-                Mangez mieux, vivez mieux
+            <h1 class="hero-title">
+                Mangez mieux, sans vous priver.
             </h1>
-            <p class="text-xl md:text-2xl mb-8 opacity-90 max-w-3xl mx-auto">
-                Une approche personnalisée pour retrouver l'équilibre entre plaisir, santé et performance
+            <p class="hero-subtitle">
+                Trouvez l'équilibre parfait entre plaisir et santé grâce à des suggestions simples, personnalisées et adaptées à votre rythme de vie.
             </p>
-            <a href="#waitlist" class="inline-block bg-white text-green-600 px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl transition transform hover:scale-105">
-                Commencer gratuitement
-            </a>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="container-custom">
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-number">100%</div>
-                <div class="stat-label">Personnalisé</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">0€</div>
-                <div class="stat-label">Pour commencer</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">24/7</div>
-                <div class="stat-label">Suivi intelligent</div>
+            <div class="flex gap-4 justify-center flex-wrap">
+                <a href="#waitlist" class="cta-button">
+                    Commencer gratuitement
+                </a>
+                <a href="#how-it-works" class="cta-button cta-button-secondary">
+                    Comment ça marche ?
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Main Content -->
-    <main class="container-custom py-16">
-        <div class="two-column-layout">
-            <!-- Left Column - Benefits -->
-            <div class="mobile-order-2">
-                <h2 class="text-4xl font-bold mb-12 text-gray-900">
-                    Votre coach nutrition intelligent
-                </h2>
+    <!-- Benefits Section -->
+    <section class="section section-benefits">
+        <div class="container-custom">
+            <h2 class="section-title">Votre compagnon nutrition au quotidien</h2>
+            
+            <div class="two-column">
+                <!-- Left Column - Benefits -->
+                <div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">📅</div>
+                        <h3 class="benefit-title">Plan quotidien adapté à votre rythme</h3>
+                        <p class="benefit-text">
+                            Que vous travailliez, fassiez du sport ou que vos journées changent, on s'adapte. Votre plan évolue avec vous, sans contrainte.
+                        </p>
+                    </div>
 
-                <!-- Benefit 1 -->
-                <div class="benefit-card">
-                    <div class="benefit-icon">🍽️</div>
-                    <h3 class="text-2xl font-bold mb-3 text-gray-900">
-                        Manger mieux, sans se priver
-                    </h3>
-                    <p class="text-gray-600 text-lg">
-                        Découvrez comment allier plaisir et nutrition. Pas de régime restrictif, juste des choix éclairés adaptés à vos goûts.
-                    </p>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🔔</div>
+                        <h3 class="benefit-title">Alerte douce quand il manque un nutriment important</h3>
+                        <p class="benefit-text">
+                            Un petit rappel intelligent pour garder l'équilibre sans contrainte. Pas de culpabilité, juste de la bienveillance.
+                        </p>
+                    </div>
+
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🍽️</div>
+                        <h3 class="benefit-title">Recettes compatibles avec vos préférences</h3>
+                        <p class="benefit-text">
+                            Végétarien, sans arachides, ou selon vos goûts — tout est ajusté automatiquement. Vos contraintes deviennent des opportunités.
+                        </p>
+                    </div>
+
+                    <!-- Social Proof -->
+                    <div class="social-proof mt-8">
+                        <p class="social-proof-text">
+                            ✨ Rejoignez les 500+ personnes qui ont déjà transformé leur alimentation
+                        </p>
+                    </div>
                 </div>
 
-                <!-- Benefit 2 -->
-                <div class="benefit-card">
-                    <div class="benefit-icon">🧠</div>
-                    <h3 class="text-2xl font-bold mb-3 text-gray-900">
-                        Comprendre les besoins de votre corps
-                    </h3>
-                    <p class="text-gray-600 text-lg">
-                        Une approche personnalisée et intelligente qui s'adapte à votre métabolisme, votre activité et vos objectifs.
-                    </p>
-                </div>
-
-                <!-- Benefit 3 -->
-                <div class="benefit-card">
-                    <div class="benefit-icon">⚖️</div>
-                    <h3 class="text-2xl font-bold mb-3 text-gray-900">
-                        Retrouver l'équilibre
-                    </h3>
-                    <p class="text-gray-600 text-lg">
-                        L'harmonie parfaite entre plaisir, santé et performance. Votre bien-être global est notre priorité.
-                    </p>
-                </div>
-
-                <!-- Social Proof -->
-                <div class="mt-12 p-6 bg-green-50 rounded-xl border-2 border-green-100">
-                    <p class="text-sm text-green-800 font-semibold">
-                        ✨ Rejoignez les 500+ personnes qui ont déjà transformé leur alimentation
-                    </p>
-                </div>
-            </div>
-
-            <!-- Right Column - Mockup & Form -->
-            <div class="mobile-order-1">
-                <!-- Mockup -->
-                <div class="mockup-container mb-12">
+                <!-- Right Column - Mockup -->
+                <div class="flex justify-center">
                     <img src="mockup-mobile.png" 
-                         alt="Aperçu de l'application NutriSmart" 
+                         alt="Aperçu de l'application" 
                          class="mockup-phone"
                          onclick="openLightbox()"
-                         onkeydown="if(event.key==='Enter') openLightbox()"
                          tabindex="0"
                          role="button"
                          aria-label="Agrandir l'aperçu de l'application">
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- Waitlist Form -->
-                <div id="waitlist" class="bg-white p-8 rounded-2xl shadow-xl">
-                    <h3 class="text-2xl font-bold mb-2 text-gray-900">
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container-custom">
+            <h2 class="section-title">Comment ça fonctionne ?</h2>
+            
+            <div class="three-column">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Fixez votre objectif</h3>
+                    <p class="step-text">
+                        Perte, maintien ou forme physique. Choisissez ce qui vous correspond vraiment.
+                    </p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Répondez à quelques questions</h3>
+                    <p class="step-text">
+                        Sur vos habitudes : horaires, préférences alimentaires, activités quotidiennes.
+                    </p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Recevez votre plan personnalisé</h3>
+                    <p class="step-text">
+                        Simple, flexible et évolutif. Ajustez-le au fil des jours selon vos besoins.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section">
+        <div class="container-custom">
+            <h2 class="section-title">Questions fréquentes</h2>
+            
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="faq-item" onclick="toggleFAQ(this)" onkeydown="if(event.key==='Enter' || event.key===' ') toggleFAQ(this)" tabindex="0" role="button" aria-expanded="false">
+                    <div class="faq-question">
+                        <span>Est-ce que ça remplace un diététicien ?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Non. C'est un compagnon du quotidien pour vous aider à faire de meilleurs choix, sans régime strict. Pour un suivi médical personnalisé, consultez toujours un professionnel de santé.
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFAQ(this)" onkeydown="if(event.key==='Enter' || event.key===' ') toggleFAQ(this)" tabindex="0" role="button" aria-expanded="false">
+                    <div class="faq-question">
+                        <span>Comment sont choisies les recettes ?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Elles sont générées selon vos préférences, vos objectifs, vos besoins nutritionnels et vos ingrédients disponibles dans votre frigo. Tout est personnalisé pour vous.
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFAQ(this)" onkeydown="if(event.key==='Enter' || event.key===' ') toggleFAQ(this)" tabindex="0" role="button" aria-expanded="false">
+                    <div class="faq-question">
+                        <span>Puis-je supprimer mes données ?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Oui, à tout moment directement depuis votre compte. Vos données vous appartiennent et nous respectons votre vie privée.
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFAQ(this)" onkeydown="if(event.key==='Enter' || event.key===' ') toggleFAQ(this)" tabindex="0" role="button" aria-expanded="false">
+                    <div class="faq-question">
+                        <span>Sur quelles plateformes l'application est-elle disponible ?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Accessible sur iOS et Android. Une seule application pour tous vos appareils.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Waitlist Form Section -->
+    <section id="waitlist" class="section beige-bg">
+        <div class="container-custom">
+            <div style="max-width: 600px; margin: 0 auto;">
+                <div class="form-container">
+                    <h2 style="font-size: 2rem; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; text-align: center;">
                         Rejoignez la beta privée
-                    </h3>
-                    <p class="text-gray-600 mb-6">
-                        Soyez parmi les premiers à tester NutriSmart
+                    </h2>
+                    <p style="text-align: center; color: var(--text-medium); margin-bottom: 32px; font-size: 1.05rem;">
+                        Soyez parmi les premiers à tester l'application
                     </p>
                     
                     <form id="waitlistForm" action="#" method="POST">
-                        <div class="mb-4">
-                            <label for="fullName" class="block text-sm font-semibold mb-2 text-gray-700">
+                        <div style="margin-bottom: 20px;">
+                            <label for="fullName" style="display: block; font-weight: 600; margin-bottom: 8px; color: var(--text-dark);">
                                 Prénom et Nom *
                             </label>
                             <input type="text" 
@@ -330,8 +615,8 @@
                                    placeholder="Marie Dupont">
                         </div>
 
-                        <div class="mb-4">
-                            <label for="email" class="block text-sm font-semibold mb-2 text-gray-700">
+                        <div style="margin-bottom: 20px;">
+                            <label for="email" style="display: block; font-weight: 600; margin-bottom: 8px; color: var(--text-dark);">
                                 Email *
                             </label>
                             <input type="email" 
@@ -342,8 +627,8 @@
                                    placeholder="marie@exemple.com">
                         </div>
 
-                        <div class="mb-4">
-                            <label for="goal" class="block text-sm font-semibold mb-2 text-gray-700">
+                        <div style="margin-bottom: 20px;">
+                            <label for="goal" style="display: block; font-weight: 600; margin-bottom: 8px; color: var(--text-dark);">
                                 Votre objectif principal *
                             </label>
                             <select id="goal" 
@@ -359,37 +644,37 @@
                             </select>
                         </div>
 
-                        <div class="mb-6">
-                            <label class="flex items-start gap-3 cursor-pointer">
+                        <div style="margin-bottom: 24px;">
+                            <label style="display: flex; align-items: start; gap: 12px; cursor: pointer;">
                                 <input type="checkbox" 
                                        id="consent" 
                                        name="consent" 
                                        required 
-                                       class="mt-1 w-5 h-5 text-green-600 border-gray-300 rounded focus:ring-green-500">
-                                <span class="text-sm text-gray-600">
-                                    J'accepte de recevoir des informations sur la beta de NutriSmart *
+                                       style="margin-top: 4px; width: 20px; height: 20px; accent-color: var(--sage-green);">
+                                <span style="font-size: 0.95rem; color: var(--text-medium);">
+                                    J'accepte de recevoir des informations sur la beta *
                                 </span>
                             </label>
                         </div>
 
-                        <button type="submit" class="cta-button">
+                        <button type="submit" class="form-button">
                             Rejoindre la liste d'attente
                         </button>
 
-                        <p class="text-xs text-center mt-4 text-gray-500">
+                        <p style="text-align: center; font-size: 0.875rem; color: var(--text-medium); margin-top: 16px;">
                             Gratuit et sans engagement. Désabonnement possible à tout moment.
                         </p>
                     </form>
                 </div>
             </div>
         </div>
-    </main>
+    </section>
 
     <!-- Footer -->
-    <footer class="bg-white border-t border-gray-200 py-8 mt-20">
+    <footer style="background: white; border-top: 2px solid var(--beige-dark); padding: 32px 0;">
         <div class="container-custom text-center">
-            <p class="text-sm text-gray-500">
-                © 2025 NutriSmart | RGPD | alexandre.petit.qin@gmail.com
+            <p style="font-size: 0.875rem; color: var(--text-medium);">
+                © 2025 Votre compagnon nutrition | RGPD | alexandre.petit.qin@gmail.com
             </p>
         </div>
     </footer>
@@ -398,11 +683,10 @@
     <div id="lightbox" 
          class="lightbox" 
          onclick="closeLightbox()"
-         onkeydown="if(event.key==='Escape') closeLightbox()"
          role="dialog"
          aria-modal="true"
          aria-label="Aperçu en plein écran">
-        <img src="mockup-mobile.png" alt="Aperçu de l'application NutriSmart">
+        <img src="mockup-mobile.png" alt="Aperçu de l'application">
     </div>
 
     <!-- Scripts -->
@@ -424,6 +708,11 @@
                 closeLightbox();
             }
         });
+        
+        // FAQ Toggle
+        function toggleFAQ(element) {
+            element.classList.toggle('active');
+        }
         
         // Configuration Google Apps Script
         // TODO: Remplacer par votre URL Google Apps Script
