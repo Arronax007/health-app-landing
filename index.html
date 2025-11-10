@@ -757,8 +757,7 @@
         }
         
         // Configuration Google Apps Script
-        // TODO: Remplacer par votre URL Google Apps Script
-        const GOOGLE_SCRIPT_URL = 'VOTRE_URL_ICI';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzCqu0m_PibU3Mgg_a0ga5jrVRIg9FUWpkU6d19_462yH28I8y4cV7Gs2gAVGmjeew/exec';
         
         // Form handling
         document.getElementById('waitlistForm').addEventListener('submit', async function(e) {
@@ -780,7 +779,17 @@
             };
             
             try {
-                // Pour l'instant, juste un log (à remplacer par l'appel Google Script)
+                // Envoyer vers Google Sheets via Apps Script
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors', // Important pour Google Apps Script
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                // Avec mode no-cors, on ne peut pas lire la réponse, donc on suppose que ça a marché
                 console.log('Form submitted:', formData);
                 
                 // Show success message
