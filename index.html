@@ -496,9 +496,9 @@
                     </div>
 
                     <!-- Social Proof -->
-                    <div class="social-proof mt-8">
+                    <div id="socialProof" class="social-proof mt-8" style="display: none;">
                         <p class="social-proof-text">
-                            ✨ Rejoignez les 500+ personnes qui ont déjà transformé leur alimentation
+                            ✨ Rejoignez les <span id="userCount">50</span> personnes qui ont déjà transformé leur alimentation
                         </p>
                     </div>
                 </div>
@@ -676,7 +676,8 @@
                             <select id="goal" 
                                     name="goal" 
                                     required 
-                                    class="form-input">
+                                    class="form-input"
+                                    onchange="toggleOtherGoal()">
                                 <option value="">Sélectionnez...</option>
                                 <option value="sante">Améliorer ma santé globale</option>
                                 <option value="energie">Avoir plus d'énergie</option>
@@ -684,6 +685,17 @@
                                 <option value="performance">Optimiser mes performances</option>
                                 <option value="autre">Autre</option>
                             </select>
+                        </div>
+
+                        <div id="otherGoalContainer" style="margin-bottom: 20px; display: none;">
+                            <label for="otherGoal" style="display: block; font-weight: 600; margin-bottom: 8px; color: var(--text-dark);">
+                                Précisez votre objectif *
+                            </label>
+                            <input type="text" 
+                                   id="otherGoal" 
+                                   name="otherGoal" 
+                                   class="form-input"
+                                   placeholder="Décrivez votre objectif...">
                         </div>
 
                         <div style="margin-bottom: 24px;">
@@ -756,6 +768,73 @@
             element.classList.toggle('active');
         }
         
+        // Toggle "Autre" goal field
+        function toggleOtherGoal() {
+            const goalSelect = document.getElementById('goal');
+            const otherContainer = document.getElementById('otherGoalContainer');
+            const otherInput = document.getElementById('otherGoal');
+            
+            if (goalSelect.value === 'autre') {
+                otherContainer.style.display = 'block';
+                otherInput.required = true;
+            } else {
+                otherContainer.style.display = 'none';
+                otherInput.required = false;
+                otherInput.value = '';
+            }
+        }
+        
+        // Initialize user count and social proof
+        async function initializeSocialProof() {
+            try {
+                // Get real count from Google Sheets
+                const response = await fetch(GOOGLE_SCRIPT_URL);
+                const data = await response.json();
+                
+                if (data.success) {
+                    let realUserCount = data.userCount;
+                    
+                    // Show social proof if we have at least 50 users (authentic count)
+                    if (realUserCount >= 50) {
+                        document.getElementById('socialProof').style.display = 'block';
+                        document.getElementById('userCount').textContent = realUserCount;
+                    }
+                }
+            } catch (error) {
+                console.log('Could not fetch real user count, hiding social proof');
+            }
+        }
+        
+        // Update user count after successful form submission
+        async function updateUserCount() {
+            // Wait a bit for the data to be saved in Google Sheets
+            setTimeout(async () => {
+                try {
+                    const response = await fetch(GOOGLE_SCRIPT_URL);
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        let realUserCount = data.userCount;
+                        
+                        // Update display with real count
+                        document.getElementById('userCount').textContent = realUserCount;
+                        
+                        // Show social proof if it was hidden
+                        if (realUserCount >= 50) {
+                            document.getElementById('socialProof').style.display = 'block';
+                        }
+                    }
+                } catch (error) {
+                    console.log('Could not update user count');
+                }
+            }, 1000); // Wait 1 second for Google Sheets to update
+        }
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeSocialProof();
+        });
+        
         // Configuration Google Apps Script
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzCqu0m_PibU3Mgg_a0ga5jrVRIg9FUWpkU6d19_462yH28I8y4cV7Gs2gAVGmjeew/exec';
         
@@ -770,10 +849,13 @@
             submitButton.textContent = 'Envoi en cours...';
             
             // Collect form data
+            const goalValue = document.getElementById('goal').value;
+            const otherGoalValue = document.getElementById('otherGoal').value;
+            
             const formData = {
                 fullName: document.getElementById('fullName').value,
                 email: document.getElementById('email').value,
-                goal: document.getElementById('goal').value,
+                goal: goalValue === 'autre' ? `Autre: ${otherGoalValue}` : goalValue,
                 consent: document.getElementById('consent').checked,
                 timestamp: new Date().toISOString()
             };
@@ -794,8 +876,13 @@
                 // Avec no-cors, on suppose que ça a marché
                 alert('Merci ! Vous avez été ajouté à la liste d\'attente. Nous vous contacterons bientôt pour la beta.');
                 
+                // Update user count
+                updateUserCount();
+                
                 // Reset form
                 this.reset();
+                // Reset "Autre" field visibility
+                toggleOtherGoal();
                 
             } catch (error) {
                 console.error('Error:', error);

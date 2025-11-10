@@ -45,10 +45,32 @@ function doPost(e) {
   }
 }
 
-// Fonction de test (optionnelle)
+// Fonction pour compter les utilisateurs (GET)
 function doGet(e) {
-  return ContentService.createTextOutput(JSON.stringify({
-    success: true,
-    message: 'API active'
-  })).setMimeType(ContentService.MimeType.JSON);
+  try {
+    const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Leads - Health App');
+    
+    if (!sheet) {
+      return ContentService.createTextOutput(JSON.stringify({
+        success: false,
+        message: 'Feuille non trouvée'
+      })).setMimeType(ContentService.MimeType.JSON);
+    }
+    
+    // Compter les lignes (moins l'en-tête)
+    const lastRow = sheet.getLastRow();
+    const userCount = Math.max(0, lastRow - 1);
+    
+    return ContentService.createTextOutput(JSON.stringify({
+      success: true,
+      userCount: userCount,
+      message: 'Compte obtenu'
+    })).setMimeType(ContentService.MimeType.JSON);
+    
+  } catch (error) {
+    return ContentService.createTextOutput(JSON.stringify({
+      success: false,
+      message: error.toString()
+    })).setMimeType(ContentService.MimeType.JSON);
+  }
 }
