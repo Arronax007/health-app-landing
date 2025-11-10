@@ -11,7 +11,7 @@
 function doPost(e) {
   try {
     // Récupérer la feuille (change le nom si nécessaire)
-    const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Leads - NutriSmart');
+    const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Leads - Health App');
     
     if (!sheet) {
       return ContentService.createTextOutput(JSON.stringify({

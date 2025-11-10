@@ -782,21 +782,26 @@
                 // Envoyer vers Google Sheets via Apps Script
                 const response = await fetch(GOOGLE_SCRIPT_URL, {
                     method: 'POST',
-                    mode: 'no-cors', // Important pour Google Apps Script
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(formData)
                 });
                 
-                // Avec mode no-cors, on ne peut pas lire la réponse, donc on suppose que ça a marché
-                console.log('Form submitted:', formData);
+                console.log('Response status:', response.status);
+                console.log('Response ok:', response.ok);
                 
-                // Show success message
-                alert('Merci ! Vous avez été ajouté à la liste d\'attente. Nous vous contacterons bientôt pour la beta.');
-                
-                // Reset form
-                this.reset();
+                if (response.ok) {
+                    console.log('Form submitted:', formData);
+                    
+                    // Show success message
+                    alert('Merci ! Vous avez été ajouté à la liste d\'attente. Nous vous contacterons bientôt pour la beta.');
+                    
+                    // Reset form
+                    this.reset();
+                } else {
+                    throw new Error('Server responded with status: ' + response.status);
+                }
                 
             } catch (error) {
                 console.error('Error:', error);
