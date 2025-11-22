@@ -1633,8 +1633,8 @@
             }
         }
 
-        // Create particles (optimized count for better performance)
-        const particleCount = window.innerWidth < 768 ? 20 : 40;
+        // Create particles (disabled on mobile for optimal performance)
+        const particleCount = window.innerWidth < 768 ? 0 : 40;
         const nutrients = [];
 
         for (let i = 0; i < particleCount; i++) {
