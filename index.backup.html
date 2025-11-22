@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votre compagnon nutrition - Mangez mieux, sans vous priver</title>
+    <meta name="description" content="Trouvez l'équilibre parfait entre plaisir et santé grâce à des suggestions simples, personnalisées et adaptées à votre rythme de vie.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            color: #2C3E2E;
+        }
+        
+        /* Couleurs vert sauge + beige */
+        :root {
+            --sage-green: #8B9D83;
+            --sage-green-light: #A8B89F;
+            --sage-green-dark: #6B7D63;
+            --beige: #F5F1E8;
+            --beige-dark: #E8E2D5;
+            --text-dark: #2C3E2E;
+            --text-medium: #5A6B5C;
+        }
+        
+        .container-custom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .sage-bg {
+            background-color: var(--sage-green);
+        }
+        
+        .beige-bg {
+            background-color: var(--beige);
+        }
+        
+        .sage-text {
+            color: var(--sage-green);
+        }
+        
+        /* Header */
+        .header {
+            background: white;
+            border-bottom: 1px solid var(--beige-dark);
+        }
+        
+        .logo-img {
+            height: 48px;
+            width: auto;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--beige) 0%, #FFFFFF 100%);
+            padding: 80px 0;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-medium);
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+        }
+        
+        /* CTA Button */
+        .cta-button {
+            background-color: var(--sage-green);
+            color: white;
+            padding: 16px 48px;
+            border-radius: 50px;
+            font-size: 1.125rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--sage-green-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(139, 157, 131, 0.3);
+        }
+        
+        .cta-button-secondary {
+            background-color: white;
+            color: var(--sage-green);
+            border: 2px solid var(--sage-green);
+        }
+        
+        .cta-button-secondary:hover {
+            background-color: var(--beige);
+        }
+        
+        /* Benefits Section */
+        .benefit-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            border: 2px solid var(--beige-dark);
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            border-color: var(--sage-green-light);
+            box-shadow: 0 10px 30px rgba(139, 157, 131, 0.15);
+            transform: translateY(-4px);
+        }
+        
+        .benefit-icon {
+            width: 64px;
+            height: 64px;
+            background-color: var(--beige);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        
+        .benefit-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+        
+        .benefit-text {
+            font-size: 1.05rem;
+            color: var(--text-medium);
+            line-height: 1.6;
+        }
+        
+        /* How It Works Section */
+        .how-it-works {
+            background-color: var(--beige);
+            padding: 80px 0;
+        }
+        
+        .step-card {
+            background: white;
+            padding: 32px;
+            border-radius: 16px;
+            border: 2px solid var(--beige-dark);
+            text-align: center;
+            height: 100%;
+        }
+        
+        .step-number {
+            width: 56px;
+            height: 56px;
+            background-color: var(--sage-green);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+        
+        .step-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+        
+        .step-text {
+            font-size: 1rem;
+            color: var(--text-medium);
+            line-height: 1.5;
+        }
+        
+        /* FAQ Section */
+        .faq-item {
+            background: white;
+            padding: 32px;
+            border-radius: 16px;
+            border: 2px solid var(--beige-dark);
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            border-color: var(--sage-green-light);
+        }
+        
+        .faq-question {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-answer {
+            font-size: 1.05rem;
+            color: var(--text-medium);
+            line-height: 1.6;
+            margin-top: 16px;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            opacity: 1;
+            margin-top: 16px;
+        }
+        
+        .faq-icon {
+            font-size: 1.5rem;
+            color: var(--sage-green);
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+        
+        /* Form Section */
+        .form-container {
+            background: white;
+            padding: 48px;
+            border-radius: 24px;
+            border: 2px solid var(--beige-dark);
+            box-shadow: 0 10px 40px rgba(139, 157, 131, 0.1);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid var(--beige-dark);
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+            background-color: var(--beige);
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--sage-green);
+            background-color: white;
+        }
+        
+        .form-button {
+            width: 100%;
+            padding: 18px;
+            background-color: var(--sage-green);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.125rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .form-button:hover {
+            background-color: var(--sage-green-dark);
+            transform: translateY(-2px);
+        }
+        
+        .form-button:disabled {
+            background-color: #D1D5DB;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        /* Mockup */
+        .mockup-phone {
+            width: 100%;
+            max-width: 320px;
+            border-radius: 32px;
+            box-shadow: 0 20px 50px rgba(44, 62, 46, 0.15);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .mockup-phone:hover {
+            transform: scale(1.02);
+        }
+        
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(44, 62, 46, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
+        
+        .lightbox.active {
+            display: flex;
+        }
+        
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 32px;
+        }
+        
+        /* Social Proof */
+        .social-proof {
+            background-color: #F0F4EF;
+            border: 2px solid var(--sage-green-light);
+            padding: 24px;
+            border-radius: 16px;
+            text-align: center;
+        }
+        
+        .social-proof-text {
+            color: var(--sage-green-dark);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        
+        /* Grid Layouts */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+        
+        @media (max-width: 968px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+            
+            .three-column {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Section Spacing */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-benefits {
+            background-image: url('temporaryLogo.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+        
+        .section-benefits::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.92);
+            z-index: 1;
+        }
+        
+        .section-benefits > * {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        @media (max-width: 768px) {
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container-custom py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold sage-text">🌿 Votre compagnon nutrition</div>
+            <a href="#waitlist" class="text-sm font-semibold sage-text hover:opacity-70 transition">
+                Rejoindre la beta
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container-custom text-center">
+            <h1 class="hero-title">
+                Mangez mieux, sans vous priver.
+            </h1>
+            <p class="hero-subtitle">
+                Vous décidez ce que vous mangez. Nous suggérons ce qu'il vous manque pour être équilibré.
+            </p>
+            <p style="margin-top: 16px; margin-bottom: 32px; font-size: 0.95rem; color: var(--sage-green); font-weight: 600;">
+                Une innovation actuellement en cours de brevet 🧠
+            </p>
+            <div class="flex gap-4 justify-center flex-wrap">
+                <a href="#waitlist" class="cta-button">
+                    Commencer gratuitement
+                </a>
+                <a href="#how-it-works" class="cta-button cta-button-secondary">
+                    Comment ça marche ?
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="section section-benefits">
+        <div class="container-custom">
+            <h2 class="section-title">Votre compagnon nutrition au quotidien</h2>
+            
+            <div class="two-column">
+                <!-- Left Column - Benefits -->
+                <div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">📅</div>
+                        <h3 class="benefit-title">Plan quotidien adapté à votre rythme</h3>
+                        <p class="benefit-text">
+                            Que vous travailliez, fassiez du sport ou que vos journées changent, on s'adapte. Votre plan évolue avec vous, sans contrainte.
+                        </p>
+                    </div>
+
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🔔</div>
+                        <h3 class="benefit-title">Alerte douce quand il manque un nutriment important</h3>
+                        <p class="benefit-text">
+                            Un petit rappel intelligent pour garder l'équilibre sans contrainte. Pas de culpabilité, juste de la bienveillance.
+                        </p>
+                    </div>
+
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🍽️</div>
+                        <h3 class="benefit-title">Recettes compatibles avec vos préférences</h3>
+                        <p class="benefit-text">
+                            Végétarien, sans arachides, ou selon vos goûts — tout est ajusté automatiquement. Vos contraintes deviennent des opportunités.
+                        </p>
+                    </div>
+
+                    <!-- Social Proof -->
+                    <div id="socialProof" class="social-proof mt-8" style="display: none;">
+                        <p class="social-proof-text">
+                            ✨ Rejoignez les <span id="userCount">50</span> personnes qui ont déjà transformé leur alimentation
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Right Column - Mockup -->
+                <div class="flex justify-center">
+                    <img src="mockup-mobile-v2.png" 
+                         alt="Aperçu de l'application" 
+                         class="mockup-phone"
+                         onclick="openLightbox()"
+                         tabindex="0"
+                         role="button"
+                         aria-label="Agrandir l'aperçu de l'application">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What Makes Us Unique Section -->
+    <section class="section">
+        <div class="container-custom">
+            <h2 class="section-title">Ce qui rend cette approche unique</h2>
+            
+            <div class="three-column">
+                <div class="step-card">
+                    <div class="benefit-icon">🧠</div>
+                    <h3 class="step-title">Il apprend de vous</h3>
+                    <p class="step-text">
+                        Plus vous l'utilisez, plus il comprend vos besoins et s'adapte à votre rythme de vie réel.
+                    </p>
+                </div>
+
+                <div class="step-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h3 class="step-title">Personnalisé, pas rigide</h3>
+                    <p class="step-text">
+                        Ici, tout est adapté à vous, pas l'inverse. Pas de règles imposées, pas de pression.
+                    </p>
+                </div>
+
+                <div class="step-card">
+                    <div class="benefit-icon">💚</div>
+                    <h3 class="step-title">Bienveillant par nature</h3>
+                    <p class="step-text">
+                        Une approche qui allie science et simplicité, pour vous aider à manger mieux, à votre manière.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container-custom">
+            <h2 class="section-title">Comment ça fonctionne ?</h2>
+            
+            <div class="three-column">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Fixez votre objectif</h3>
+                    <p class="step-text">
+                        Perte, maintien ou forme physique. Choisissez ce qui vous correspond vraiment.
+                    </p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Répondez à quelques questions</h3>
+                    <p class="step-text">
+                        Sur vos habitudes : horaires, préférences alimentaires, activités quotidiennes.
+                    </p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Recevez votre plan personnalisé</h3>
+                    <p class="step-text">
+                        Simple, flexible et évolutif. Ajustez-le au fil des jours selon vos besoins.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section">
+        <div class="container-custom">
+            <h2 class="section-title">Questions fréquentes</h2>
+            
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="faq-item" onclick="toggleFAQ(this)" onkeydown="if(event.key==='Enter' || event.key===' ') toggleFAQ(this)" tabindex="0" role="button" aria-expanded="false">
+                    <div class="faq-question">
+                        <span>Est-ce que ça remplace un diététicien ?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Non. C'est un compagnon du quotidien pour vous aider à faire de meilleurs choix, sans régime strict. Pour un suivi médical personnalisé, consultez toujours un professionnel de santé.
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFAQ(this)" onkeydown="if(event.key==='Enter' || event.key===' ') toggleFAQ(this)" tabindex="0" role="button" aria-expanded="false">
+                    <div class="faq-question">
+                        <span>Comment sont choisies les recettes ?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Elles sont générées selon vos préférences, vos objectifs, vos besoins nutritionnels et vos ingrédients disponibles dans votre frigo. Tout est personnalisé pour vous.
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFAQ(this)" onkeydown="if(event.key==='Enter' || event.key===' ') toggleFAQ(this)" tabindex="0" role="button" aria-expanded="false">
+                    <div class="faq-question">
+                        <span>Puis-je supprimer mes données ?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Oui, à tout moment directement depuis votre compte. Vos données vous appartiennent et nous respectons votre vie privée.
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFAQ(this)" onkeydown="if(event.key==='Enter' || event.key===' ') toggleFAQ(this)" tabindex="0" role="button" aria-expanded="false">
+                    <div class="faq-question">
+                        <span>Sur quelles plateformes l'application est-elle disponible ?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Accessible sur iOS et Android. Une seule application pour tous vos appareils.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Waitlist Form Section -->
+    <section id="waitlist" class="section beige-bg">
+        <div class="container-custom">
+            <div style="max-width: 600px; margin: 0 auto;">
+                <div class="form-container">
+                    <h2 style="font-size: 2rem; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; text-align: center;">
+                        Rejoignez la beta privée
+                    </h2>
+                    <p style="text-align: center; color: var(--text-medium); margin-bottom: 32px; font-size: 1.05rem;">
+                        Soyez parmi les premiers à tester l'application
+                    </p>
+                    
+                    <form id="waitlistForm" action="#" method="POST">
+                        <div style="margin-bottom: 20px;">
+                            <label for="fullName" style="display: block; font-weight: 600; margin-bottom: 8px; color: var(--text-dark);">
+                                Prénom et Nom *
+                            </label>
+                            <input type="text" 
+                                   id="fullName" 
+                                   name="fullName" 
+                                   required 
+                                   class="form-input"
+                                   placeholder="Marie Dupont">
+                        </div>
+
+                        <div style="margin-bottom: 20px;">
+                            <label for="email" style="display: block; font-weight: 600; margin-bottom: 8px; color: var(--text-dark);">
+                                Email *
+                            </label>
+                            <input type="email" 
+                                   id="email" 
+                                   name="email" 
+                                   required 
+                                   class="form-input"
+                                   placeholder="marie@exemple.com">
+                        </div>
+
+                        <div style="margin-bottom: 20px;">
+                            <label for="goal" style="display: block; font-weight: 600; margin-bottom: 8px; color: var(--text-dark);">
+                                Votre objectif principal *
+                            </label>
+                            <select id="goal" 
+                                    name="goal" 
+                                    required 
+                                    class="form-input"
+                                    onchange="toggleOtherGoal()">
+                                <option value="">Sélectionnez...</option>
+                                <option value="sante">Améliorer ma santé globale</option>
+                                <option value="energie">Avoir plus d'énergie</option>
+                                <option value="poids">Gérer mon poids</option>
+                                <option value="performance">Optimiser mes performances</option>
+                                <option value="autre">Autre</option>
+                            </select>
+                        </div>
+
+                        <div id="otherGoalContainer" style="margin-bottom: 20px; display: none;">
+                            <label for="otherGoal" style="display: block; font-weight: 600; margin-bottom: 8px; color: var(--text-dark);">
+                                Précisez votre objectif *
+                            </label>
+                            <input type="text" 
+                                   id="otherGoal" 
+                                   name="otherGoal" 
+                                   class="form-input"
+                                   placeholder="Décrivez votre objectif...">
+                        </div>
+
+                        <div style="margin-bottom: 24px;">
+                            <label style="display: flex; align-items: start; gap: 12px; cursor: pointer;">
+                                <input type="checkbox" 
+                                       id="consent" 
+                                       name="consent" 
+                                       required 
+                                       style="margin-top: 4px; width: 20px; height: 20px; accent-color: var(--sage-green);">
+                                <span style="font-size: 0.95rem; color: var(--text-medium);">
+                                    J'accepte de recevoir des informations sur la beta et je reconnais avoir pris connaissance de la <a href="politique-confidentialite.html" target="_blank" style="color: var(--sage-green); text-decoration: underline;">politique de confidentialité</a> *
+                                </span>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="form-button">
+                            Rejoindre la liste d'attente
+                        </button>
+
+                        <p style="text-align: center; font-size: 0.875rem; color: var(--text-medium); margin-top: 16px;">
+                            Gratuit et sans engagement. Désabonnement possible à tout moment.<br>
+                            <a href="disclaimer-sante.html" target="_blank" style="color: var(--sage-green); text-decoration: underline;">⚠️ Cette application n'est pas un dispositif médical</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: white; border-top: 2px solid var(--beige-dark); padding: 32px 0;">
+        <div class="container-custom text-center">
+            <p style="font-size: 0.875rem; color: var(--text-medium); margin-bottom: 12px;">
+                <a href="politique-confidentialite.html" style="color: var(--sage-green); text-decoration: none; margin: 0 10px;">Politique de confidentialité</a> |
+                <a href="mentions-legales.html" style="color: var(--sage-green); text-decoration: none; margin: 0 10px;">Mentions légales</a> |
+                <a href="disclaimer-sante.html" style="color: var(--sage-green); text-decoration: none; margin: 0 10px;">Disclaimer Santé</a>
+            </p>
+            <p style="font-size: 0.875rem; color: var(--text-medium);">
+                © 2025 Votre compagnon nutrition | <a href="mailto:jennyvgrimm@gmail.com" style="color: var(--sage-green); text-decoration: none;">Contact</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" 
+         class="lightbox" 
+         onclick="closeLightbox()"
+         role="dialog"
+         aria-modal="true"
+         aria-label="Aperçu en plein écran">
+        <img src="mockup-mobile-v2.png" alt="Aperçu de l'application">
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Lightbox functions
+        function openLightbox() {
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close lightbox with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+        
+        // FAQ Toggle
+        function toggleFAQ(element) {
+            element.classList.toggle('active');
+        }
+        
+        // Toggle "Autre" goal field
+        function toggleOtherGoal() {
+            const goalSelect = document.getElementById('goal');
+            const otherContainer = document.getElementById('otherGoalContainer');
+            const otherInput = document.getElementById('otherGoal');
+            
+            if (goalSelect.value === 'autre') {
+                otherContainer.style.display = 'block';
+                otherInput.required = true;
+            } else {
+                otherContainer.style.display = 'none';
+                otherInput.required = false;
+                otherInput.value = '';
+            }
+        }
+        
+        // Initialize user count and social proof
+        async function initializeSocialProof() {
+            try {
+                // Get real count from Google Sheets
+                const response = await fetch(GOOGLE_SCRIPT_URL);
+                const data = await response.json();
+                
+                if (data.success) {
+                    let realUserCount = data.userCount;
+                    
+                    // Show social proof if we have at least 50 users (authentic count)
+                    if (realUserCount >= 50) {
+                        document.getElementById('socialProof').style.display = 'block';
+                        document.getElementById('userCount').textContent = realUserCount;
+                    }
+                }
+            } catch (error) {
+                console.log('Could not fetch real user count, hiding social proof');
+            }
+        }
+        
+        // Update user count after successful form submission
+        async function updateUserCount() {
+            // Wait a bit for the data to be saved in Google Sheets
+            setTimeout(async () => {
+                try {
+                    const response = await fetch(GOOGLE_SCRIPT_URL);
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        let realUserCount = data.userCount;
+                        
+                        // Update display with real count
+                        document.getElementById('userCount').textContent = realUserCount;
+                        
+                        // Show social proof if it was hidden
+                        if (realUserCount >= 50) {
+                            document.getElementById('socialProof').style.display = 'block';
+                        }
+                    }
+                } catch (error) {
+                    console.log('Could not update user count');
+                }
+            }, 1000); // Wait 1 second for Google Sheets to update
+        }
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeSocialProof();
+        });
+        
+        // Configuration Google Apps Script
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzCqu0m_PibU3Mgg_a0ga5jrVRIg9FUWpkU6d19_462yH28I8y4cV7Gs2gAVGmjeew/exec';
+        
+        // Form handling
+        document.getElementById('waitlistForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Désactiver le bouton pendant l'envoi
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            submitButton.disabled = true;
+            submitButton.textContent = 'Envoi en cours...';
+            
+            // Collect form data
+            const goalValue = document.getElementById('goal').value;
+            const otherGoalValue = document.getElementById('otherGoal').value;
+            
+            const formData = {
+                fullName: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                goal: goalValue === 'autre' ? `Autre: ${otherGoalValue}` : goalValue,
+                consent: document.getElementById('consent').checked,
+                timestamp: new Date().toISOString()
+            };
+            
+            try {
+                // Envoyer vers Google Sheets via Apps Script
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors', // Obligatoire pour Google Apps Script
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                console.log('Form submitted:', formData);
+                
+                // Avec no-cors, on suppose que ça a marché
+                alert('Merci ! Vous avez été ajouté à la liste d\'attente. Nous vous contacterons bientôt pour la beta.');
+                
+                // Update user count
+                updateUserCount();
+                
+                // Reset form
+                this.reset();
+                // Reset "Autre" field visibility
+                toggleOtherGoal();
+                
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Une erreur est survenue. Veuillez réessayer ou nous contacter directement.');
+            } finally {
+                // Réactiver le bouton
+                submitButton.disabled = false;
+                submitButton.textContent = originalText;
+            }
+        });
+    </script>
+</body>
+</html>
