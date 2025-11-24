@@ -996,8 +996,9 @@
             <!-- Social Proof - Transparent -->
             <div class="social-proof" style="margin-top: 32px;">
                 <p style="font-size: 1rem; color: var(--text-medium); font-weight: 500;">
-                    🚀 <strong style="color: var(--sage-green);">15 early adopters</strong> ont déjà réservé leur place
-                    • Plus que 85 places
+                    🚀 <strong style="color: var(--sage-green);"><span class="signup-count">...</span> early
+                        adopters</strong> ont déjà réservé leur place
+                    • Plus que <span class="remaining-places">...</span> places
                 </p>
             </div>
         </div>
@@ -1148,7 +1149,7 @@
                             EN COURS
                         </div>
                         <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 8px;">
-                            Phase 1 : Validation (15/100 inscrits)
+                            Phase 1 : Validation (<span class="signup-count">...</span>/100 inscrits)
                         </h3>
                         <p style="color: var(--text-medium); line-height: 1.6;">
                             On recueille les 100 premiers emails pour valider l'intérêt. Dès l'objectif atteint, on
@@ -1213,7 +1214,7 @@
                     </div>
                 </div>
                 <p style="font-size: 1.25rem; font-weight: 700; color: var(--sage-green);">
-                    15/100 places réservées
+                    <span class="signup-count">...</span>/100 places réservées
                 </p>
             </div>
 
@@ -1283,7 +1284,7 @@
                     </ul>
 
                     <div style="text-align: center; font-weight: 700; color: var(--sage-green); font-size: 0.95rem;">
-                        15/100 places prises
+                        <span class="signup-count">...</span>/100 places prises
                     </div>
                 </div>
 
@@ -1504,7 +1505,8 @@
                         Réservez votre statut de Founding Member
                     </h2>
                     <p style="text-align: center; color: var(--text-medium); margin-bottom: 32px; font-size: 1.05rem;">
-                        <strong style="color: var(--sage-green);">15/100 places réservées.</strong> En vous inscrivant
+                        <strong style="color: var(--sage-green);"><span class="signup-count">...</span>/100 places
+                            réservées.</strong> En vous inscrivant
                         maintenant, vous recevez :
                     </p>
 
@@ -1668,59 +1670,58 @@
             }
         }
 
-        // Initialize user count and social proof
-        async function initializeSocialProof() {
+        // Configuration Google Apps Script
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzCqu0m_PibU3Mgg_a0ga5jrVRIg9FUWpkU6d19_462yH28I8y4cV7Gs2gAVGmjeew/exec';
+        const TOTAL_GOAL = 100; // Objectif Founding Members
+
+        // Update all signup counters on the page
+        async function updateSignupCounters() {
             try {
                 // Get real count from Google Sheets
                 const response = await fetch(GOOGLE_SCRIPT_URL);
                 const data = await response.json();
 
-                if (data.success) {
-                    let realUserCount = data.userCount;
+                if (data.success && data.userCount !== undefined) {
+                    const currentSignups = data.userCount;
+                    const remainingPlaces = TOTAL_GOAL - currentSignups;
 
-                    // Show social proof if we have at least 50 users (authentic count)
-                    if (realUserCount >= 50) {
-                        document.getElementById('socialProof').style.display = 'block';
-                        document.getElementById('userCount').textContent = realUserCount;
-                    }
+                    // Update all .signup-count elements
+                    document.querySelectorAll('.signup-count').forEach(el => {
+                        el.textContent = currentSignups;
+                    });
+
+                    // Update all .remaining-places elements
+                    document.querySelectorAll('.remaining-places').forEach(el => {
+                        el.textContent = remainingPlaces;
+                    });
+
+                    console.log(`✅ Compteurs mis à jour : ${currentSignups}/100 inscrits`);
+                } else {
+                    console.log('⚠️ Impossible de récupérer le nombre d\'inscrits, affichage des valeurs par défaut');
+                    // Fallback to default values if API fails
+                    document.querySelectorAll('.signup-count').forEach(el => {
+                        el.textContent = '0';
+                    });
+                    document.querySelectorAll('.remaining-places').forEach(el => {
+                        el.textContent = '100';
+                    });
                 }
             } catch (error) {
-                console.log('Could not fetch real user count, hiding social proof');
+                console.log('❌ Erreur lors de la récupération du compteur:', error);
+                // Fallback to default values
+                document.querySelectorAll('.signup-count').forEach(el => {
+                    el.textContent = '0';
+                });
+                document.querySelectorAll('.remaining-places').forEach(el => {
+                    el.textContent = '100';
+                });
             }
-        }
-
-        // Update user count after successful form submission
-        async function updateUserCount() {
-            // Wait a bit for the data to be saved in Google Sheets
-            setTimeout(async () => {
-                try {
-                    const response = await fetch(GOOGLE_SCRIPT_URL);
-                    const data = await response.json();
-
-                    if (data.success) {
-                        let realUserCount = data.userCount;
-
-                        // Update display with real count
-                        document.getElementById('userCount').textContent = realUserCount;
-
-                        // Show social proof if it was hidden
-                        if (realUserCount >= 50) {
-                            document.getElementById('socialProof').style.display = 'block';
-                        }
-                    }
-                } catch (error) {
-                    console.log('Could not update user count');
-                }
-            }, 1000); // Wait 1 second for Google Sheets to update
         }
 
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function () {
-            initializeSocialProof();
+            updateSignupCounters();
         });
-
-        // Configuration Google Apps Script
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzCqu0m_PibU3Mgg_a0ga5jrVRIg9FUWpkU6d19_462yH28I8y4cV7Gs2gAVGmjeew/exec';
 
         // Form handling
         document.getElementById('waitlistForm').addEventListener('submit', async function (e) {
@@ -1760,8 +1761,10 @@
                 // Show modern success modal instead of alert
                 showSuccessModal();
 
-                // Update user count
-                updateUserCount();
+                // Update all signup counters with latest data
+                setTimeout(() => {
+                    updateSignupCounters();
+                }, 1500); // Wait 1.5s for Google Sheets to update
 
                 // Reset form
                 this.reset();
