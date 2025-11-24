@@ -952,6 +952,13 @@
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(139, 157, 131, 0.3);
         }
+
+        /* Responsive: Comparison grid mobile */
+        @media (max-width: 768px) {
+            .comparison-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
     </style>
 </head>
 
@@ -1004,49 +1011,203 @@
         </div>
     </section>
 
+    <!-- SECTION DIFFÉRENCIATION - Pourquoi c'est différent -->
+    <section class="section" style="padding: 60px 0; background: white;">
+        <div class="container-custom" style="max-width: 1000px;">
+
+            <h2 class="section-title" style="font-size: 1.8rem; margin-bottom: 16px; text-align: center;">
+                Pourquoi c'est différent des autres apps nutrition
+            </h2>
+
+            <p
+                style="text-align: center; color: var(--text-medium); margin-bottom: 48px; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+                Les autres apps vous imposent un régime rigide. Ici, <strong>vous mangez ce que vous voulez</strong>,
+                et l'app ajuste le reste en temps réel.
+            </p>
+
+            <div class="comparison-grid"
+                style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 48px;">
+
+                <!-- COLONNE 1 : AUTRES APPS -->
+                <div
+                    style="padding: 32px; background: rgba(244, 67, 54, 0.05); border-radius: 16px; border: 2px solid rgba(244, 67, 54, 0.2);">
+                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 20px; color: #F44336;">
+                        ❌ Les autres apps nutrition
+                    </h3>
+
+                    <div style="margin-bottom: 16px;">
+                        <div style="display: flex; gap: 12px; align-items: start;">
+                            <span style="font-size: 1.5rem; line-height: 1;">📋</span>
+                            <div>
+                                <p style="font-weight: 600; margin: 0 0 4px 0; color: var(--text-dark);">Plan rigide
+                                    imposé</p>
+                                <p style="font-size: 0.95rem; color: var(--text-medium); margin: 0; line-height: 1.5;">
+                                    "Vous devez manger 150g de poulet et 200g de riz"
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 16px;">
+                        <div style="display: flex; gap: 12px; align-items: start;">
+                            <span style="font-size: 1.5rem; line-height: 1;">⚠️</span>
+                            <div>
+                                <p style="font-weight: 600; margin: 0 0 4px 0; color: var(--text-dark);">Culpabilité si
+                                    tu dévies</p>
+                                <p style="font-size: 0.95rem; color: var(--text-medium); margin: 0; line-height: 1.5;">
+                                    "Vous avez dépassé vos calories, régime cassé"
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div style="display: flex; gap: 12px; align-items: start;">
+                            <span style="font-size: 1.5rem; line-height: 1;">🔒</span>
+                            <div>
+                                <p style="font-weight: 600; margin: 0 0 4px 0; color: var(--text-dark);">Plan figé sur 7
+                                    jours</p>
+                                <p style="font-size: 0.95rem; color: var(--text-medium); margin: 0; line-height: 1.5;">
+                                    Si ta journée change, le plan ne s'adapte pas
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COLONNE 2 : TON APP -->
+                <div
+                    style="padding: 32px; background: rgba(139, 157, 131, 0.08); border-radius: 16px; border: 2px solid var(--sage-green);">
+                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 20px; color: var(--sage-green);">
+                        ✅ Cette app
+                    </h3>
+
+                    <div style="margin-bottom: 16px;">
+                        <div style="display: flex; gap: 12px; align-items: start;">
+                            <span style="font-size: 1.5rem; line-height: 1;">🍕</span>
+                            <div>
+                                <p style="font-weight: 600; margin: 0 0 4px 0; color: var(--text-dark);">Tu manges ce
+                                    que tu veux</p>
+                                <p style="font-size: 0.95rem; color: var(--text-medium); margin: 0; line-height: 1.5;">
+                                    "Pizza ce soir ? Parfait. Ajoute juste une salade"
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 16px;">
+                        <div style="display: flex; gap: 12px; align-items: start;">
+                            <span style="font-size: 1.5rem; line-height: 1;">💚</span>
+                            <div>
+                                <p style="font-weight: 600; margin: 0 0 4px 0; color: var(--text-dark);">Compensation,
+                                    pas jugement</p>
+                                <p style="font-size: 0.95rem; color: var(--text-medium); margin: 0; line-height: 1.5;">
+                                    "Il te manque des protéines, voici 3 idées simples"
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div style="display: flex; gap: 12px; align-items: start;">
+                            <span style="font-size: 1.5rem; line-height: 1;">⚡</span>
+                            <div>
+                                <p style="font-weight: 600; margin: 0 0 4px 0; color: var(--text-dark);">Ajustement en
+                                    temps réel</p>
+                                <p style="font-size: 0.95rem; color: var(--text-medium); margin: 0; line-height: 1.5;">
+                                    Sport annulé ? Repas sauté ? Le plan s'adapte automatiquement
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ENCADRÉ EXEMPLE CONCRET -->
+            <div
+                style="padding: 28px 32px; background: var(--beige); border-radius: 16px; border-left: 4px solid var(--sage-green);">
+                <h4 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 20px; color: var(--text-dark);">
+                    📱 Exemple concret d'utilisation
+                </h4>
+
+                <div style="margin-bottom: 16px;">
+                    <p style="font-weight: 600; color: var(--text-dark); margin-bottom: 8px;">
+                        🕐 12h30 - Vous mangez une pizza 4 fromages
+                    </p>
+                    <p
+                        style="color: var(--text-medium); padding-left: 24px; font-size: 0.95rem; line-height: 1.6; margin: 0;">
+                        L'app analyse : beaucoup de lipides, peu de fibres, pas de légumes, protéines OK.
+                    </p>
+                </div>
+
+                <div style="margin-bottom: 16px;">
+                    <p style="font-weight: 600; color: var(--text-dark); margin-bottom: 8px;">
+                        🔔 16h00 - Notification douce
+                    </p>
+                    <p
+                        style="color: var(--text-medium); padding-left: 24px; font-size: 0.95rem; line-height: 1.6; margin: 0;">
+                        <em>"Ce soir, privilégie des légumes et des fibres. Voici 3 recettes rapides : salade composée,
+                            soupe de légumes, wok de légumes."</em>
+                    </p>
+                </div>
+
+                <div>
+                    <p style="font-weight: 600; color: var(--text-dark); margin-bottom: 8px;">
+                        ✅ Résultat
+                    </p>
+                    <p
+                        style="color: var(--text-medium); padding-left: 24px; font-size: 0.95rem; line-height: 1.6; margin: 0;">
+                        Journée équilibrée, zéro frustration, zéro culpabilité. <strong>C'est ça la vraie
+                            flexibilité.</strong>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
     <!-- Benefits Section -->
     <section class="section section-benefits">
         <div class="container-custom">
             <h2 class="section-title reveal-on-scroll">Votre compagnon nutrition au quotidien</h2>
 
-            <div class="two-column">
-                <!-- Left Column - Benefits -->
-                <div>
-                    <div class="benefit-card reveal-on-scroll stagger-1">
-                        <div class="benefit-icon">📅</div>
-                        <h3 class="benefit-title">Plan quotidien adapté à votre rythme</h3>
-                        <p class="benefit-text">
-                            Que vous travailliez, fassiez du sport ou que vos journées changent, on s'adapte. Votre plan
-                            évolue avec vous, sans contrainte.
-                        </p>
-                    </div>
-
-                    <div class="benefit-card reveal-on-scroll stagger-2">
-                        <div class="benefit-icon">🔔</div>
-                        <h3 class="benefit-title">Alerte douce quand il manque un nutriment important</h3>
-                        <p class="benefit-text">
-                            Un petit rappel intelligent pour garder l'équilibre sans contrainte. Pas de culpabilité,
-                            juste de la bienveillance.
-                        </p>
-                    </div>
-
-                    <div class="benefit-card reveal-on-scroll stagger-3">
-                        <div class="benefit-icon">🍽️</div>
-                        <h3 class="benefit-title">Recettes compatibles avec vos préférences</h3>
-                        <p class="benefit-text">
-                            Végétarien, sans arachides, ou selon vos goûts — tout est ajusté automatiquement. Vos
-                            contraintes deviennent des opportunités.
-                        </p>
-                    </div>
+            <!-- Left Column - Benefits -->
+            <div>
+                <div class="benefit-card reveal-on-scroll stagger-1">
+                    <div class="benefit-icon">📅</div>
+                    <h3 class="benefit-title">Plan quotidien adapté à votre rythme</h3>
+                    <p class="benefit-text">
+                        Que vous travailliez, fassiez du sport ou que vos journées changent, on s'adapte. Votre plan
+                        évolue avec vous, sans contrainte.
+                    </p>
                 </div>
 
-                <!-- Right Column - Mockup -->
-                <div class="flex justify-center">
-                    <img src="mockup-mobile-v2.png" alt="Aperçu de l'application" class="mockup-phone"
-                        onclick="openLightbox()" tabindex="0" role="button"
-                        aria-label="Agrandir l'aperçu de l'application">
+                <div class="benefit-card reveal-on-scroll stagger-2">
+                    <div class="benefit-icon">🔔</div>
+                    <h3 class="benefit-title">Alerte douce quand il manque un nutriment important</h3>
+                    <p class="benefit-text">
+                        Un petit rappel intelligent pour garder l'équilibre sans contrainte. Pas de culpabilité,
+                        juste de la bienveillance.
+                    </p>
+                </div>
+
+                <div class="benefit-card reveal-on-scroll stagger-3">
+                    <div class="benefit-icon">🍽️</div>
+                    <h3 class="benefit-title">Recettes compatibles avec vos préférences</h3>
+                    <p class="benefit-text">
+                        Végétarien, sans arachides, ou selon vos goûts — tout est ajusté automatiquement. Vos
+                        contraintes deviennent des opportunités.
+                    </p>
                 </div>
             </div>
+
+            <!-- Right Column - Mockup -->
+            <div class="flex justify-center">
+                <img src="mockup-mobile-v2.png" alt="Aperçu de l'application" class="mockup-phone"
+                    onclick="openLightbox()" tabindex="0" role="button" aria-label="Agrandir l'aperçu de l'application">
+            </div>
+        </div>
         </div>
     </section>
 
@@ -1186,8 +1347,8 @@
                             Phase 3 : Beta privée (Avril 2026)
                         </h3>
                         <p style="color: var(--text-medium); line-height: 1.6;">
-                            Les 100 premiers reçoivent leur accès. Tests en conditions réelles, feedback, ajustements.
-                            Vous avez 6 mois gratuits.
+                            Les 100 premiers reçoivent leur accès à vie. Tests en conditions réelles, feedback,
+                            ajustements.
                         </p>
                     </div>
                 </div>
