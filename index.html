@@ -959,6 +959,13 @@
                 grid-template-columns: 1fr !important;
             }
         }
+
+        /* Responsive: Hide mockup bubbles on tablet/mobile */
+        @media (max-width: 1024px) {
+            .mockup-bubble {
+                display: none !important;
+            }
+        }
     </style>
 </head>
 
@@ -1202,10 +1209,41 @@
                 </div>
             </div>
 
-            <!-- Right Column - Mockup -->
-            <div class="flex justify-center">
+            <!-- Right Column - Mockup (Annotated) -->
+            <div style="position: relative; max-width: 400px; margin: 40px auto;">
+
+                <!-- Image mockup -->
                 <img src="mockup-mobile-v2.png" alt="Aperçu de l'application" class="mockup-phone"
+                    style="width: 100%; height: auto; border-radius: 24px; box-shadow: 0 20px 60px rgba(0,0,0,0.15);"
                     onclick="openLightbox()" tabindex="0" role="button" aria-label="Agrandir l'aperçu de l'application">
+
+                <!-- Bulle 1 : Haut gauche -->
+                <div class="mockup-bubble"
+                    style="position: absolute; top: 15%; left: -160px; background: white; padding: 12px 16px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); max-width: 200px; border-left: 3px solid var(--sage-green);">
+                    <p
+                        style="font-size: 0.85rem; font-weight: 600; margin: 0; color: var(--text-dark); line-height: 1.4;">
+                        💬 "Tu as mangé une pizza ? Ajoute une salade ce soir"
+                    </p>
+                </div>
+
+                <!-- Bulle 2 : Milieu droit -->
+                <div class="mockup-bubble"
+                    style="position: absolute; top: 45%; right: -180px; background: white; padding: 12px 16px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); max-width: 220px; border-left: 3px solid var(--sage-green);">
+                    <p
+                        style="font-size: 0.85rem; font-weight: 600; margin: 0; color: var(--text-dark); line-height: 1.4;">
+                        📊 Calcul automatique des manques nutritionnels
+                    </p>
+                </div>
+
+                <!-- Bulle 3 : Bas gauche -->
+                <div class="mockup-bubble"
+                    style="position: absolute; bottom: 20%; left: -140px; background: white; padding: 12px 16px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); max-width: 180px; border-left: 3px solid var(--sage-green);">
+                    <p
+                        style="font-size: 0.85rem; font-weight: 600; margin: 0; color: var(--text-dark); line-height: 1.4;">
+                        ⚡ S'adapte en temps réel à ta journée
+                    </p>
+                </div>
+
             </div>
         </div>
         </div>
@@ -1547,6 +1585,47 @@
             <h2 class="section-title">Questions fréquentes</h2>
 
             <div style="max-width: 800px; margin: 0 auto;">
+                <!-- FAQ NOUVELLE 1 : Différenciation vs concurrents -->
+                <div class="faq-item" onclick="toggleFAQ(this)"
+                    onkeydown="if(event.key==='Enter' || event.key===' ') toggleFAQ(this)" tabindex="0" role="button"
+                    aria-expanded="false">
+                    <div class="faq-question">
+                        <span>En quoi c'est différent de MyFitnessPal, Yazio ou Lifesum ?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        Ces apps suivent un modèle "plan rigide + tracking". Vous devez respecter des calories/macros
+                        fixées à l'avance.
+                        Si vous mangez une pizza, vous "cassez" votre plan et vous culpabilisez.
+                        <br><br>
+                        <strong>Notre approche est radicalement différente :</strong> vous mangez ce que vous voulez, et
+                        l'app calcule en temps réel
+                        ce qu'il faut ajouter pour rester équilibré. Pas de plan figé, pas de culpabilité.
+                        C'est une <strong>compensation dynamique</strong>, pas un régime.
+                    </div>
+                </div>
+
+                <!-- FAQ NOUVELLE 2 : Timeline claire -->
+                <div class="faq-item" onclick="toggleFAQ(this)"
+                    onkeydown="if(event.key==='Enter' || event.key===' ') toggleFAQ(this)" tabindex="0" role="button"
+                    aria-expanded="false">
+                    <div class="faq-question">
+                        <span>Quand est-ce que je pourrai vraiment utiliser l'app ?</span>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <strong>Timeline claire :</strong>
+                        <br>• <strong>Maintenant :</strong> On récolte les 100 premiers emails (<span
+                            class="signup-count">...</span>/100 actuellement)
+                        <br>• <strong>Janvier-Mars 2026 :</strong> Développement du MVP avec les Founding Members
+                        <br>• <strong>Avril 2026 :</strong> Beta privée pour les 100 premiers
+                        <br>• <strong>Mai 2026 :</strong> Lancement public
+                        <br><br>
+                        Les Founding Members (100 premiers) testent en avant-première et influencent directement le
+                        produit.
+                    </div>
+                </div>
+
                 <!-- FAQ 1 : App existe déjà ? - TRANSPARENT -->
                 <div class="faq-item" onclick="toggleFAQ(this)"
                     onkeydown="if(event.key==='Enter' || event.key===' ') toggleFAQ(this)" tabindex="0" role="button"
