@@ -960,6 +960,27 @@
             }
         }
 
+        /* Loading Spinner */
+        .loading-spinner {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border: 2px solid rgba(139, 157, 131, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--sage-green);
+            animation: spin 1s linear infinite;
+            margin: 0 2px;
+            vertical-align: middle;
+            position: relative;
+            top: -1px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
         /* Responsive: Hide mockup bubbles on tablet/mobile */
         @media (max-width: 1024px) {
             .mockup-bubble {
@@ -1010,9 +1031,10 @@
             <!-- Social Proof - Transparent -->
             <div class="social-proof" style="margin-top: 32px;">
                 <p style="font-size: 1rem; color: var(--text-medium); font-weight: 500;">
-                    🚀 <strong style="color: var(--sage-green);"><span class="signup-count">...</span> early
+                    🚀 <strong style="color: var(--sage-green);"><span class="signup-count"><span
+                                class="loading-spinner"></span></span> early
                         adopters</strong> ont déjà réservé leur place
-                    • Plus que <span class="remaining-places">...</span> places
+                    • Plus que <span class="remaining-places"><span class="loading-spinner"></span></span> places
                 </p>
             </div>
         </div>
@@ -1622,7 +1644,7 @@
                     <div class="faq-answer">
                         <strong>Timeline claire :</strong>
                         <br>• <strong>Maintenant :</strong> On récolte les 100 premiers emails (<span
-                            class="signup-count">...</span>/100 actuellement)
+                            class="signup-count"><span class="loading-spinner"></span></span>/100 actuellement)
                         <br>• <strong>Janvier-Mars 2026 :</strong> Développement du MVP avec les Founding Members
                         <br>• <strong>Avril 2026 :</strong> Beta privée pour les 100 premiers
                         <br>• <strong>Mai 2026 :</strong> Lancement public
@@ -1743,7 +1765,8 @@
                         Réservez votre statut de Founding Member
                     </h2>
                     <p style="text-align: center; color: var(--text-medium); margin-bottom: 32px; font-size: 1.05rem;">
-                        <strong style="color: var(--sage-green);"><span class="signup-count">...</span>/100 places
+                        <strong style="color: var(--sage-green);"><span class="signup-count"><span
+                                    class="loading-spinner"></span></span>/100 places
                             réservées.</strong>
                     </p>
 
