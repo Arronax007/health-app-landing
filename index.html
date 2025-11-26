@@ -2002,8 +2002,12 @@
             submitButton.textContent = 'Envoi en cours...';
 
             // Collect form data (simplified form with only email)
+            // We keep other fields empty to maintain compatibility with existing Google Apps Script
             const formData = {
+                fullName: "",
                 email: document.getElementById('email').value,
+                goal: "N/A",
+                consent: true,
                 timestamp: new Date().toISOString()
             };
 
