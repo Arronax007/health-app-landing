@@ -2001,15 +2001,9 @@
             submitButton.disabled = true;
             submitButton.textContent = 'Envoi en cours...';
 
-            // Collect form data
-            const goalValue = document.getElementById('goal').value;
-            const otherGoalValue = document.getElementById('otherGoal').value;
-
+            // Collect form data (simplified form with only email)
             const formData = {
-                fullName: document.getElementById('fullName').value,
                 email: document.getElementById('email').value,
-                goal: goalValue === 'autre' ? `Autre: ${otherGoalValue}` : goalValue,
-                consent: document.getElementById('consent').checked,
                 timestamp: new Date().toISOString()
             };
 
@@ -2036,8 +2030,6 @@
 
                 // Reset form
                 this.reset();
-                // Reset "Autre" field visibility
-                toggleOtherGoal();
 
             } catch (error) {
                 console.error('Error:', error);
