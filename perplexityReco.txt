@@ -1,0 +1,226 @@
+🎯 PROMPT À ENVOYER À WINDSURF
+text
+MODIFICATION DE LA LANDING PAGE - PASSAGE À STRATÉGIE "LISTE D'ATTENTE + VALIDATION"
+
+Contexte :
+- On passe d'une stratégie "Founding Members/Early Adopters avec paliers" à une stratégie "Liste d'attente simple + validation"
+- L'objectif : réduire la complexité, ne pas afficher le compteur de places, et mettre focus sur la validation de l'intérêt avant développement
+
+Modifications à effectuer :
+
+1. [SUPPRIMER] Section "Progression actuelle" (barre de progression 15/100)
+   - Chercher : "Progression actuelle" + ".../100 places réservées" + barre de progression
+   - Supprimer : Tout le bloc
+
+2. [SUPPRIMER] Section complète "Paliers dégressifs" (les 4 tiers : Founding Members, Early Adopters, Beta Testers, Standard)
+   - Chercher : "Plus tu t'inscris tôt, plus tes avantages sont importants"
+   - Supprimer : Tout jusqu'à "Les places Founding Members se remplissent vite"
+
+3. [SUPPRIMER] Message d'urgence sur les places
+   - Chercher : "⏰ Les places Founding Members se remplissent vite"
+   - Supprimer : Ce bloc entièrement
+
+4. [REMPLACER] Texte Roadmap Phase 1
+   - Ancien : "On recueille les 100 premiers emails pour valider l'intérêt. Dès l'objectif atteint, on passe au développement."
+   - Nouveau : "On recueille les 100 premiers emails pour valider l'intérêt du marché. Si on atteint 100 inscriptions, le développement démarre immédiatement."
+
+5. [REMPLACER] Texte Roadmap Phase 2
+   - Ancien : "Création du MVP avec les 100 early adopters. Tu recevras des updates hebdomadaires et pourras proposer des ajustements."
+   - Nouveau : "Développement du MVP (12 semaines estimées). Les inscrits reçoivent des updates hebdomadaires et peuvent proposer des ajustements."
+
+6. [REMPLACER] Texte Roadmap Phase 3
+   - Ancien : "Les 100 premiers reçoivent leur accès à vie. Tests en conditions réelles, feedback, ajustements."
+   - Nouveau : "Accès beta pour les 100 premiers inscrits (gratuit + accès complet). Tests en conditions réelles, feedback, ajustements."
+
+7. [REMPLACER] Section Formulaire Waitlist - Titre
+   - Ancien : "Réservez votre statut de Founding Member"
+   - Nouveau : "Rejoignez la liste d'attente"
+
+8. [REMPLACER] Section Formulaire Waitlist - Description
+   - Ancien : "En t'inscrivant maintenant, tu deviens Founding Member avec accès gratuit à vie + influence directe sur le produit."
+   - Nouveau : "Inscris-toi pour être notifié du lancement de la beta et rejoins les 100 premiers utilisateurs si nous atteignons notre objectif de validation."
+
+9. [REMPLACER] CTA Bouton Formulaire
+   - Ancien : "Réserver ma place (gratuit à vie)"
+   - Nouveau : "Rejoindre la liste d'attente"
+
+10. [AJOUTER] Réassurance bas du formulaire
+    - Ancien texte réassurance : "✅ Gratuit • ✅ Sans engagement • ✅ 6 mois offerts pour les 100 premiers"
+    - Nouveau texte : "✅ Gratuit • ✅ Sans engagement • ✅ Sois notifié du lancement"
+
+Vérification finale :
+- [ ] Aucune mention de "places" / "100 premiers" / "Founding Members" / "Early Adopters" n'est visible publiquement
+- [ ] Aucun compteur (15/100) visible
+- [ ] Roadmap parle de "100 inscriptions = déclencheur développement"
+- [ ] Formulaire est simple et neutre (liste d'attente)
+- [ ] Aucune offre d'avantages n'est affichée (gratuit à vie, etc.)
+💻 CODE À UTILISER (Sections complètes)
+1. NOUVEAU TEXTE ROADMAP (Section complète à remplacer)
+xml
+<!-- SECTION ROADMAP TRANSPARENTE -->
+<section class="section" style="background: white; padding: 60px 0;">
+  <div class="container-custom" style="max-width: 800px;">
+    
+    <h2 class="section-title" style="margin-bottom: 48px;">
+      Notre roadmap (100% transparente)
+    </h2>
+
+    <div class="timeline" style="position: relative; padding-left: 40px;">
+      
+      <!-- Ligne verticale -->
+      <div style="position: absolute; left: 16px; top: 0; bottom: 0; width: 2px; background: var(--sage-green-light);"></div>
+
+      <!-- Étape 1 : EN COURS -->
+      <div style="position: relative; margin-bottom: 48px;">
+        <div style="position: absolute; left: -32px; width: 32px; height: 32px; background: var(--sage-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700;">
+          ✓
+        </div>
+        <div style="padding-left: 16px;">
+          <div style="display: inline-block; background: rgba(139, 157, 131, 0.15); color: var(--sage-green); padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 8px;">
+            EN COURS
+          </div>
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 8px;">
+            Phase 1 : Validation (0 à 100 inscrits)
+          </h3>
+          <p style="color: var(--text-medium); line-height: 1.6;">
+            On recueille les 100 premiers emails pour valider l'intérêt du marché. Si on atteint 100 inscriptions, le développement démarre immédiatement.
+          </p>
+        </div>
+      </div>
+
+      <!-- Étape 2 : PROCHAIN -->
+      <div style="position: relative; margin-bottom: 48px;">
+        <div style="position: absolute; left: -32px; width: 32px; height: 32px; background: white; border: 2px solid var(--sage-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--sage-green); font-weight: 700;">
+          2
+        </div>
+        <div style="padding-left: 16px;">
+          <div style="display: inline-block; background: rgba(139, 157, 131, 0.1); color: var(--text-medium); padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 8px;">
+            SI VALIDATION ATTEINTE
+          </div>
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 8px;">
+            Phase 2 : Développement (12 semaines)
+          </h3>
+          <p style="color: var(--text-medium); line-height: 1.6;">
+            Développement du MVP. Les inscrits reçoivent des updates hebdomadaires et peuvent proposer des ajustements.
+          </p>
+        </div>
+      </div>
+
+      <!-- Étape 3 : À VENIR -->
+      <div style="position: relative;">
+        <div style="position: absolute; left: -32px; width: 32px; height: 32px; background: white; border: 2px solid var(--sage-green-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--sage-green-light); font-weight: 700;">
+          3
+        </div>
+        <div style="padding-left: 16px;">
+          <div style="display: inline-block; background: rgba(139, 157, 131, 0.08); color: var(--text-medium); padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 8px;">
+            À VENIR
+          </div>
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 8px;">
+            Phase 3 : Beta privée
+          </h3>
+          <p style="color: var(--text-medium); line-height: 1.6;">
+            Les 100 premiers inscrits accèdent à la beta (gratuit + accès complet). Tests en conditions réelles, feedback, ajustements.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+2. NOUVEAU FORMULAIRE WAITLIST
+xml
+<!-- FORMULAIRE WAITLIST SIMPLIFIÉ -->
+<section id="waitlist" class="section beige-bg">
+  <div class="container-custom">
+    <div style="max-width: 600px; margin: 0 auto;">
+      <div class="form-container">
+        
+        <!-- Titre -->
+        <h2 style="font-size: 2rem; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; text-align: center;">
+          Rejoignez la liste d'attente
+        </h2>
+        
+        <!-- Sous-titre -->
+        <p style="text-align: center; color: var(--text-medium); margin-bottom: 32px; font-size: 1.05rem; line-height: 1.6;">
+          Inscris-toi pour être notifié du lancement de la beta et rejoins les 100 premiers utilisateurs 
+          si nous atteignons notre objectif de validation.
+        </p>
+
+        <form id="waitlistForm" action="" method="POST">
+          
+          <!-- Champ Prénom -->
+          <div style="margin-bottom: 20px;">
+            <label for="fullName" style="display: block; font-weight: 600; margin-bottom: 8px; color: var(--text-dark);">
+              Prénom
+            </label>
+            <input 
+              type="text" 
+              id="fullName" 
+              name="fullName" 
+              required 
+              class="form-input" 
+              placeholder="Marie"
+            >
+          </div>
+
+          <!-- Champ Email -->
+          <div style="margin-bottom: 20px;">
+            <label for="email" style="display: block; font-weight: 600; margin-bottom: 8px; color: var(--text-dark);">
+              Email
+            </label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              required 
+              class="form-input" 
+              placeholder="marie@exemple.com"
+            >
+          </div>
+
+          <!-- Consentement -->
+          <div style="margin-bottom: 24px;">
+            <label style="display: flex; align-items: start; gap: 12px; cursor: pointer;">
+              <input 
+                type="checkbox" 
+                id="consent" 
+                name="consent" 
+                required 
+                style="margin-top: 4px; width: 20px; height: 20px; accent-color: var(--sage-green);"
+              >
+              <span style="font-size: 0.95rem; color: var(--text-medium);">
+                Je veux être notifié quand la beta est disponible (désinscription possible à tout moment)
+              </span>
+            </label>
+          </div>
+
+          <!-- CTA Button -->
+          <button type="submit" class="form-button">
+            Rejoindre la liste d'attente
+          </button>
+
+          <!-- Réassurance -->
+          <p style="text-align: center; font-size: 0.875rem; color: var(--text-medium); margin-top: 16px;">
+            ✅ Gratuit • ✅ Sans engagement • ✅ Sois notifié du lancement
+          </p>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+📋 CHECKLIST DE VÉRIFICATION
+ Aucune mention de "15/100" ou compteur visible
+
+ Aucune section "Paliers" / "Founding Members" / "Early Adopters"
+
+ Roadmap parle de "100 inscriptions = trigger développement"
+
+ Formulaire titre = "Rejoignez la liste d'attente"
+
+ CTA = "Rejoindre la liste d'attente" (pas "Réserver ma place")
+
+ Aucune promesse d'avantages (gratuit à vie, etc.) affichée publiquement
+
+ Réassurance = "Gratuit - Sans engagement - Sois notifié du lancement"
