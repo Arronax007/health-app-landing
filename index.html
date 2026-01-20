@@ -1816,6 +1816,10 @@
                 footer_disclaimer: "Disclaimer Santé",
                 footer_contact: "Contact",
 
+                // Form messages
+                form_submitting: "Envoi en cours...",
+                form_error: "Une erreur est survenue. Veuillez réessayer ou nous contacter directement.",
+
                 // Unique Approach Section
                 unique_title: "Ce qui rend cette approche unique",
                 unique_card1_title: "Il apprend de toi",
@@ -1937,6 +1941,10 @@
                 footer_disclaimer: "Health Disclaimer",
                 footer_contact: "Contact",
 
+                // Form messages
+                form_submitting: "Submitting...",
+                form_error: "An error occurred. Please try again or contact us directly.",
+
                 // Unique Approach Section
                 unique_title: "What makes this approach unique",
                 unique_card1_title: "It learns from you",
@@ -2011,6 +2019,12 @@
             });
             document.querySelectorAll('footer a[href*="disclaimer-sante"], footer a[href*="health-disclaimer"]').forEach(link => {
                 link.href = footerLinks.disclaimer;
+            });
+
+            // Update mockup images based on language
+            const mockupImage = lang === 'fr' ? 'mockup-mobile-v2.png' : 'mockup-mobile-v2-en.png';
+            document.querySelectorAll('img[src*="mockup-mobile-v2"]').forEach(img => {
+                img.src = mockupImage;
             });
 
             // Update page title
@@ -2110,7 +2124,7 @@
             const submitButton = this.querySelector('button[type="submit"]');
             const originalText = submitButton.textContent;
             submitButton.disabled = true;
-            submitButton.textContent = 'Envoi en cours...';
+            submitButton.textContent = translations[currentLang].form_submitting;
 
             // Collect form data (simplified form with prénom, email, consent)
             // We keep goal as N/A to maintain compatibility with existing Google Apps Script
@@ -2148,7 +2162,7 @@
 
             } catch (error) {
                 console.error('Error:', error);
-                alert('Une erreur est survenue. Veuillez réessayer ou nous contacter directement.');
+                alert(translations[currentLang].form_error);
             } finally {
                 // Réactiver le bouton
                 submitButton.disabled = false;
