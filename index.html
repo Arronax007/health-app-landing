@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aptaé - L'app nutrition qui te laisse manger ce que tu veux</title>
+    <title>Aptaé</title>
     <meta name="description"
         content="Trouve l'équilibre parfait entre plaisir et santé grâce à des suggestions simples, personnalisées et adaptées à ton rythme de vie.">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -987,6 +987,26 @@
                 display: none !important;
             }
         }
+
+        /* Language Toggle Styles */
+        .lang-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
+
+        .lang-btn.active {
+            opacity: 1;
+            font-weight: 700;
+            text-decoration: underline;
+        }
+
+        .lang-btn:hover {
+            opacity: 0.7;
+        }
     </style>
 </head>
 
@@ -998,32 +1018,48 @@
     <header class="header">
         <div class="container-custom py-4 flex justify-between items-center">
             <div class="text-2xl font-bold sage-text">🌿 Aptaé</div>
-            <a href="#waitlist" class="text-sm font-semibold sage-text hover:opacity-70 transition">
-                Rejoindre la liste d'attente
-            </a>
+
+            <!-- Language Toggle -->
+            <div class="flex items-center gap-4">
+                <div id="lang-toggle" class="flex gap-2 text-sm font-semibold">
+                    <button onclick="switchLanguage('fr')" id="lang-fr"
+                        class="lang-btn sage-text hover:opacity-70 transition">
+                        FR
+                    </button>
+                    <span class="text-gray-400">|</span>
+                    <button onclick="switchLanguage('en')" id="lang-en"
+                        class="lang-btn sage-text hover:opacity-70 transition">
+                        EN
+                    </button>
+                </div>
+                <a href="#waitlist" class="text-sm font-semibold sage-text hover:opacity-70 transition"
+                    data-i18n="header_cta">
+                    Rejoindre la liste d'attente
+                </a>
+            </div>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="container-custom text-center">
-            <h1 class="hero-title">
+            <h1 class="hero-title" data-i18n="hero_title">
                 Arrête de culpabiliser<br>
                 pour ce que tu manges.
             </h1>
-            <p class="hero-subtitle">
+            <p class="hero-subtitle" data-i18n="hero_subtitle">
                 Pizza ce soir ? Parfait. On te suggère juste ce qu'il faut ajouter
                 pour rester équilibré. Sans régime, sans contrainte, sans stress.
             </p>
-            <p class="patent-text"
+            <p class="patent-text" data-i18n="hero_patent_text"
                 style="margin-top: 16px; margin-bottom: 32px; font-size: 0.95rem; color: var(--sage-green); font-weight: 600;">
                 Une innovation actuellement en cours de brevet 🧠
             </p>
             <div class="flex gap-4 justify-center flex-wrap">
-                <a href="#waitlist" class="cta-button wave-effect" id="waveCTA">
+                <a href="#waitlist" class="cta-button wave-effect" id="waveCTA" data-i18n="hero_cta_primary">
                     Rejoindre la liste d'attente
                 </a>
-                <a href="#roadmap" class="cta-button cta-button-secondary">
+                <a href="#roadmap" class="cta-button cta-button-secondary" data-i18n="hero_cta_secondary">
                     Voir la roadmap ↓
                 </a>
             </div>
@@ -1036,11 +1072,12 @@
     <section class="section" style="padding: 60px 0; background: white;">
         <div class="container-custom" style="max-width: 1000px;">
 
-            <h2 class="section-title" style="font-size: 1.8rem; margin-bottom: 16px; text-align: center;">
+            <h2 class="section-title" style="font-size: 1.8rem; margin-bottom: 16px; text-align: center;"
+                data-i18n="comparison_title">
                 Pourquoi c'est différent des autres apps nutrition
             </h2>
 
-            <p
+            <p data-i18n="comparison_subtitle"
                 style="text-align: center; color: var(--text-medium); margin-bottom: 48px; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.6;">
                 Les autres apps t'imposent un régime rigide. Ici, <strong>tu manges ce que tu veux</strong>,
                 et l'app équilibre le reste pour toi.
@@ -1052,7 +1089,8 @@
                 <!-- COLONNE 1 : AUTRES APPS -->
                 <div
                     style="padding: 32px; background: rgba(244, 67, 54, 0.05); border-radius: 16px; border: 2px solid rgba(244, 67, 54, 0.2);">
-                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 20px; color: #F44336;">
+                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 20px; color: #F44336;"
+                        data-i18n="comparison_col1_title">
                         ❌ Les autres apps nutrition
                     </h3>
 
@@ -1060,9 +1098,11 @@
                         <div style="display: flex; gap: 12px; align-items: start;">
                             <span style="font-size: 1.5rem; line-height: 1;">📋</span>
                             <div>
-                                <p style="font-weight: 600; margin: 0 0 4px 0; color: var(--text-dark);">Plan rigide
+                                <p style="font-weight: 600; margin: 0 0 4px 0; color: var(--text-dark);"
+                                    data-i18n="comparison_col1_item1_title">Plan rigide
                                     imposé</p>
-                                <p style="font-size: 0.95rem; color: var(--text-medium); margin: 0; line-height: 1.5;">
+                                <p style="font-size: 0.95rem; color: var(--text-medium); margin: 0; line-height: 1.5;"
+                                    data-i18n="comparison_col1_item1_desc">
                                     "Tu dois manger 150g de poulet et 200g de riz"
                                 </p>
                             </div>
@@ -1073,9 +1113,11 @@
                         <div style="display: flex; gap: 12px; align-items: start;">
                             <span style="font-size: 1.5rem; line-height: 1;">⚠️</span>
                             <div>
-                                <p style="font-weight: 600; margin: 0 0 4px 0; color: var(--text-dark);">Culpabilité si
+                                <p style="font-weight: 600; margin: 0 0 4px 0; color: var(--text-dark);"
+                                    data-i18n="comparison_col1_item2_title">Culpabilité si
                                     tu dévies</p>
-                                <p style="font-size: 0.95rem; color: var(--text-medium); margin: 0; line-height: 1.5;">
+                                <p style="font-size: 0.95rem; color: var(--text-medium); margin: 0; line-height: 1.5;"
+                                    data-i18n="comparison_col1_item2_desc">
                                     "Tu as dépassé tes calories, régime cassé"
                                 </p>
                             </div>
@@ -1086,9 +1128,11 @@
                         <div style="display: flex; gap: 12px; align-items: start;">
                             <span style="font-size: 1.5rem; line-height: 1;">🔒</span>
                             <div>
-                                <p style="font-weight: 600; margin: 0 0 4px 0; color: var(--text-dark);">Plan figé sur 7
+                                <p style="font-weight: 600; margin: 0 0 4px 0; color: var(--text-dark);"
+                                    data-i18n="comparison_col1_item3_title">Plan figé sur 7
                                     jours</p>
-                                <p style="font-size: 0.95rem; color: var(--text-medium); margin: 0; line-height: 1.5;">
+                                <p style="font-size: 0.95rem; color: var(--text-medium); margin: 0; line-height: 1.5;"
+                                    data-i18n="comparison_col1_item3_desc">
                                     Si ta journée change, le plan ne s'adapte pas
                                 </p>
                             </div>
@@ -1099,7 +1143,8 @@
                 <!-- COLONNE 2 : TON APP -->
                 <div
                     style="padding: 32px; background: rgba(139, 157, 131, 0.08); border-radius: 16px; border: 2px solid var(--sage-green);">
-                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 20px; color: var(--sage-green);">
+                    <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 20px; color: var(--sage-green);"
+                        data-i18n="comparison_col2_title">
                         ✅ Cette app
                     </h3>
 
@@ -1107,9 +1152,11 @@
                         <div style="display: flex; gap: 12px; align-items: start;">
                             <span style="font-size: 1.5rem; line-height: 1;">🍔</span>
                             <div>
-                                <p style="font-weight: 600; margin: 0 0 4px 0; color: var(--text-dark);">Tu manges ce
+                                <p style="font-weight: 600; margin: 0 0 4px 0; color: var(--text-dark);"
+                                    data-i18n="comparison_col2_item1_title">Tu manges ce
                                     que tu veux</p>
-                                <p style="font-size: 0.95rem; color: var(--text-medium); margin: 0; line-height: 1.5;">
+                                <p style="font-size: 0.95rem; color: var(--text-medium); margin: 0; line-height: 1.5;"
+                                    data-i18n="comparison_col2_item1_desc">
                                     "Burger au déjeuner ? Ajoute des légumes ce soir"
                                 </p>
                             </div>
@@ -1120,9 +1167,11 @@
                         <div style="display: flex; gap: 12px; align-items: start;">
                             <span style="font-size: 1.5rem; line-height: 1;">💚</span>
                             <div>
-                                <p style="font-weight: 600; margin: 0 0 4px 0; color: var(--text-dark);">Compensation,
+                                <p style="font-weight: 600; margin: 0 0 4px 0; color: var(--text-dark);"
+                                    data-i18n="comparison_col2_item2_title">Compensation,
                                     pas jugement</p>
-                                <p style="font-size: 0.95rem; color: var(--text-medium); margin: 0; line-height: 1.5;">
+                                <p style="font-size: 0.95rem; color: var(--text-medium); margin: 0; line-height: 1.5;"
+                                    data-i18n="comparison_col2_item2_desc">
                                     "Il te manque des protéines, voici 3 idées simples"
                                 </p>
                             </div>
@@ -1133,9 +1182,11 @@
                         <div style="display: flex; gap: 12px; align-items: start;">
                             <span style="font-size: 1.5rem; line-height: 1;">⚡</span>
                             <div>
-                                <p style="font-weight: 600; margin: 0 0 4px 0; color: var(--text-dark);">Ajustement en
+                                <p style="font-weight: 600; margin: 0 0 4px 0; color: var(--text-dark);"
+                                    data-i18n="comparison_col2_item3_title">Ajustement en
                                     temps réel</p>
-                                <p style="font-size: 0.95rem; color: var(--text-medium); margin: 0; line-height: 1.5;">
+                                <p style="font-size: 0.95rem; color: var(--text-medium); margin: 0; line-height: 1.5;"
+                                    data-i18n="comparison_col2_item3_desc">
                                     Sport annulé ? Repas sauté ? Le plan s'adapte automatiquement
                                 </p>
                             </div>
@@ -1148,15 +1199,17 @@
             <!-- ENCADRÉ EXEMPLE CONCRET -->
             <div
                 style="padding: 28px 32px; background: var(--beige); border-radius: 16px; border-left: 4px solid var(--sage-green);">
-                <h4 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 20px; color: var(--text-dark);">
+                <h4 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 20px; color: var(--text-dark);"
+                    data-i18n="comparison_example_title">
                     📱 Exemple concret d'utilisation
                 </h4>
 
                 <div style="margin-bottom: 16px;">
-                    <p style="font-weight: 600; color: var(--text-dark); margin-bottom: 8px;">
+                    <p style="font-weight: 600; color: var(--text-dark); margin-bottom: 8px;"
+                        data-i18n="comparison_example_step1_title">
                         🕐 12h30 - Tu mange des pâtes carbonara
                     </p>
-                    <p
+                    <p data-i18n="comparison_example_step1_desc"
                         style="color: var(--text-medium); padding-left: 24px; font-size: 0.95rem; line-height: 1.6; margin: 0;">
                         Beaucoup de lipides, pas de légumes = peu de fibres, glucides OK, protéines probablement
                         insuffisantes pour ce repas.
@@ -1164,10 +1217,11 @@
                 </div>
 
                 <div style="margin-bottom: 16px;">
-                    <p style="font-weight: 600; color: var(--text-dark); margin-bottom: 8px;">
+                    <p style="font-weight: 600; color: var(--text-dark); margin-bottom: 8px;"
+                        data-i18n="comparison_example_step2_title">
                         🔔 16h00 - Notification douce
                     </p>
-                    <p
+                    <p data-i18n="comparison_example_step2_desc"
                         style="color: var(--text-medium); padding-left: 24px; font-size: 0.95rem; line-height: 1.6; margin: 0;">
                         <em>"Ce soir, mise sur des fibres (un légume), une source de protéine et une portion de
                             glucide.<br><br>
@@ -1177,10 +1231,11 @@
                 </div>
 
                 <div>
-                    <p style="font-weight: 600; color: var(--text-dark); margin-bottom: 8px;">
+                    <p style="font-weight: 600; color: var(--text-dark); margin-bottom: 8px;"
+                        data-i18n="comparison_example_step3_title">
                         ✅ Résultat
                     </p>
-                    <p
+                    <p data-i18n="comparison_example_step3_desc"
                         style="color: var(--text-medium); padding-left: 24px; font-size: 0.95rem; line-height: 1.6; margin: 0;">
                         Journée équilibrée, zéro frustration, zéro culpabilité. <strong>C'est ça la vraie
                             flexibilité.</strong>
@@ -1194,14 +1249,14 @@
     <!-- Benefits Section -->
     <section class="section section-benefits">
         <div class="container-custom">
-            <h2 class="section-title reveal-on-scroll">Aptaé au quotidien</h2>
+            <h2 class="section-title reveal-on-scroll" data-i18n="benefits_title">Aptaé au quotidien</h2>
 
             <!-- Left Column - Benefits -->
             <div>
                 <div class="benefit-card reveal-on-scroll stagger-1">
                     <div class="benefit-icon">📅</div>
-                    <h3 class="benefit-title">Plan quotidien adapté à ton rythme</h3>
-                    <p class="benefit-text">
+                    <h3 class="benefit-title" data-i18n="benefits_card1_title">Plan quotidien adapté à ton rythme</h3>
+                    <p class="benefit-text" data-i18n="benefits_card1_desc">
                         Que tu travailles, fasses du sport ou que tes journées changent, on s'adapte. Ton plan
                         évolue avec toi, en toute liberté.
                     </p>
@@ -1209,8 +1264,9 @@
 
                 <div class="benefit-card reveal-on-scroll stagger-2">
                     <div class="benefit-icon">🔔</div>
-                    <h3 class="benefit-title">Alerte douce quand il manque un nutriment important</h3>
-                    <p class="benefit-text">
+                    <h3 class="benefit-title" data-i18n="benefits_card2_title">Alerte douce quand il manque un nutriment
+                        important</h3>
+                    <p class="benefit-text" data-i18n="benefits_card2_desc">
                         Un petit rappel intelligent pour garder l'équilibre sans contrainte. Pas de culpabilité,
                         juste de la bienveillance.
                     </p>
@@ -1218,8 +1274,9 @@
 
                 <div class="benefit-card reveal-on-scroll stagger-3">
                     <div class="benefit-icon">🍽️</div>
-                    <h3 class="benefit-title">Recettes compatibles avec tes préférences</h3>
-                    <p class="benefit-text">
+                    <h3 class="benefit-title" data-i18n="benefits_card3_title">Recettes compatibles avec tes préférences
+                    </h3>
+                    <p class="benefit-text" data-i18n="benefits_card3_desc">
                         Végétarien, sans arachides, ou selon tes goûts — tout est ajusté automatiquement. Tes
                         contraintes deviennent des opportunités.
                     </p>
@@ -1239,9 +1296,11 @@
                     <div style="display: flex; gap: 12px; align-items: flex-start;">
                         <span style="font-size: 1.5rem; line-height: 1;">💬</span>
                         <div>
-                            <p style="font-weight: 700; color: var(--text-dark); margin: 0 0 4px 0;">Suggestions
+                            <p style="font-weight: 700; color: var(--text-dark); margin: 0 0 4px 0;"
+                                data-i18n="benefits_feature1_title">Suggestions
                                 contextuelles</p>
-                            <p style="font-size: 0.9rem; color: var(--text-medium); margin: 0; line-height: 1.4;">"Tu as
+                            <p style="font-size: 0.9rem; color: var(--text-medium); margin: 0; line-height: 1.4;"
+                                data-i18n="benefits_feature1_desc">"Tu as
                                 mangé léger ce midi ? Tu peux te faire plaisir ce soir"</p>
                         </div>
                     </div>
@@ -1249,9 +1308,11 @@
                     <div style="display: flex; gap: 12px; align-items: flex-start;">
                         <span style="font-size: 1.5rem; line-height: 1;">📊</span>
                         <div>
-                            <p style="font-weight: 700; color: var(--text-dark); margin: 0 0 4px 0;">Calcul automatique
+                            <p style="font-weight: 700; color: var(--text-dark); margin: 0 0 4px 0;"
+                                data-i18n="benefits_feature2_title">Calcul automatique
                             </p>
-                            <p style="font-size: 0.9rem; color: var(--text-medium); margin: 0; line-height: 1.4;">L'app
+                            <p style="font-size: 0.9rem; color: var(--text-medium); margin: 0; line-height: 1.4;"
+                                data-i18n="benefits_feature2_desc">L'app
                                 analyse tes repas et identifie ce qui manque</p>
                         </div>
                     </div>
@@ -1259,9 +1320,11 @@
                     <div style="display: flex; gap: 12px; align-items: flex-start;">
                         <span style="font-size: 1.5rem; line-height: 1;">⚡</span>
                         <div>
-                            <p style="font-weight: 700; color: var(--text-dark); margin: 0 0 4px 0;">Ajustement
+                            <p style="font-weight: 700; color: var(--text-dark); margin: 0 0 4px 0;"
+                                data-i18n="benefits_feature3_title">Ajustement
                                 instantané</p>
-                            <p style="font-size: 0.9rem; color: var(--text-medium); margin: 0; line-height: 1.4;">Sport
+                            <p style="font-size: 0.9rem; color: var(--text-medium); margin: 0; line-height: 1.4;"
+                                data-i18n="benefits_feature3_desc">Sport
                                 annulé ? Repas sauté ? Le plan se recalcule</p>
                         </div>
                     </div>
@@ -1275,29 +1338,29 @@
     <!-- What Makes Us Unique Section -->
     <section class="section">
         <div class="container-custom">
-            <h2 class="section-title">Ce qui rend cette approche unique</h2>
+            <h2 class="section-title" data-i18n="unique_title">Ce qui rend cette approche unique</h2>
 
             <div class="three-column">
                 <div class="step-card">
                     <div class="benefit-icon">🧠</div>
-                    <h3 class="step-title">Il apprend de toi</h3>
-                    <p class="step-text">
+                    <h3 class="step-title" data-i18n="unique_card1_title">Il apprend de toi</h3>
+                    <p class="step-text" data-i18n="unique_card1_desc">
                         Plus tu l'utilises, plus il comprend tes besoins et s'adapte à ton rythme de vie réel.
                     </p>
                 </div>
 
                 <div class="step-card">
                     <div class="benefit-icon">🎯</div>
-                    <h3 class="step-title">Personnalisé, pas rigide</h3>
-                    <p class="step-text">
+                    <h3 class="step-title" data-i18n="unique_card2_title">Personnalisé, pas rigide</h3>
+                    <p class="step-text" data-i18n="unique_card2_desc">
                         Ici, tout est adapté à toi, pas l'inverse. Pas de règles imposées, pas de pression.
                     </p>
                 </div>
 
                 <div class="step-card">
                     <div class="benefit-icon">💚</div>
-                    <h3 class="step-title">Bienveillant par nature</h3>
-                    <p class="step-text">
+                    <h3 class="step-title" data-i18n="unique_card3_title">Bienveillant par nature</h3>
+                    <p class="step-text" data-i18n="unique_card3_desc">
                         Une approche qui allie science et simplicité, pour t'aider à manger mieux, à ta manière.
                     </p>
                 </div>
@@ -1308,29 +1371,29 @@
     <!-- How It Works Section -->
     <section id="how-it-works" class="how-it-works">
         <div class="container-custom">
-            <h2 class="section-title">Comment ça fonctionne ?</h2>
+            <h2 class="section-title" data-i18n="howitworks_title">Comment ça fonctionne ?</h2>
 
             <div class="three-column">
                 <div class="step-card">
                     <div class="step-number">1</div>
-                    <h3 class="step-title">Fixe ton objectif</h3>
-                    <p class="step-text">
+                    <h3 class="step-title" data-i18n="howitworks_step1_title">Fixe ton objectif</h3>
+                    <p class="step-text" data-i18n="howitworks_step1_desc">
                         Perte, maintien ou forme physique. Choisis ce qui te correspond vraiment.
                     </p>
                 </div>
 
                 <div class="step-card">
                     <div class="step-number">2</div>
-                    <h3 class="step-title">Répondez à quelques questions</h3>
-                    <p class="step-text">
+                    <h3 class="step-title" data-i18n="howitworks_step2_title">Répondez à quelques questions</h3>
+                    <p class="step-text" data-i18n="howitworks_step2_desc">
                         Sur tes habitudes : horaires, préférences alimentaires, activités quotidiennes.
                     </p>
                 </div>
 
                 <div class="step-card">
                     <div class="step-number">3</div>
-                    <h3 class="step-title">Reçois ton plan personnalisé</h3>
-                    <p class="step-text">
+                    <h3 class="step-title" data-i18n="howitworks_step3_title">Reçois ton plan personnalisé</h3>
+                    <p class="step-text" data-i18n="howitworks_step3_desc">
                         Simple, flexible et évolutif. Ajuste-le au fil des jours selon tes besoins.
                     </p>
                 </div>
@@ -1340,8 +1403,8 @@
     <section class="section" style="background: white; padding: 60px 0;">
         <div class="container-custom" style="max-width: 800px;">
 
-            <h2 class="section-title" style="margin-bottom: 48px;">
-                Notre roadmap
+            <h2 class="section-title" style="margin-bottom: 48px;" data-i18n="roadmap_title">
+                Notre roadmap (100% transparente)
             </h2>
 
             <div class="timeline" style="position: relative; padding-left: 40px;">
@@ -1362,10 +1425,11 @@
                             style="display: inline-block; background: rgba(139, 157, 131, 0.15); color: var(--sage-green); padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 8px;">
                             EN COURS
                         </div>
-                        <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 8px;">
+                        <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 8px;"
+                            data-i18n="roadmap_phase1_title">
                             Phase 1 : Validation (0 à 100 inscrits)
                         </h3>
-                        <p style="color: var(--text-medium); line-height: 1.6;">
+                        <p style="color: var(--text-medium); line-height: 1.6;" data-i18n="roadmap_phase1_desc">
                             On recueille les 100 premiers emails pour valider votre intérêt. Si on atteint 100
                             inscriptions, le développement démarre immédiatement.
                         </p>
@@ -1383,10 +1447,11 @@
                             style="display: inline-block; background: rgba(139, 157, 131, 0.1); color: var(--text-medium); padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 8px;">
                             SI VALIDATION ATTEINTE
                         </div>
-                        <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 8px;">
+                        <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 8px;"
+                            data-i18n="roadmap_phase2_title">
                             Phase 2 : Développement (12 semaines)
                         </h3>
-                        <p style="color: var(--text-medium); line-height: 1.6;">
+                        <p style="color: var(--text-medium); line-height: 1.6;" data-i18n="roadmap_phase2_desc">
                             Développement du MVP. Les inscrits reçoivent des updates hebdomadaires et peuvent proposer
                             des ajustements.
                         </p>
@@ -1404,10 +1469,11 @@
                             style="display: inline-block; background: rgba(139, 157, 131, 0.08); color: var(--text-medium); padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 8px;">
                             À VENIR
                         </div>
-                        <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 8px;">
+                        <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 8px;"
+                            data-i18n="roadmap_phase3_title">
                             Phase 3 : Beta privée
                         </h3>
-                        <p style="color: var(--text-medium); line-height: 1.6;">
+                        <p style="color: var(--text-medium); line-height: 1.6;" data-i18n="roadmap_phase3_desc">
                             Les 100 premiers inscrits accèdent à la beta (gratuit + accès complet). Tests en conditions
                             réelles, feedback, ajustements.
                         </p>
@@ -1423,7 +1489,7 @@
     <!-- FAQ Section -->
     <section class="section">
         <div class="container-custom">
-            <h2 class="section-title">Questions fréquentes</h2>
+            <h2 class="section-title" data-i18n="faq_title">Questions fréquentes</h2>
 
             <div style="max-width: 800px; margin: 0 auto;">
 
@@ -1432,18 +1498,15 @@
                     onkeydown="if(event.key==='Enter' || event.key===' ') toggleFAQ(this)" tabindex="0" role="button"
                     aria-expanded="false">
                     <div class="faq-question">
-                        <span>En quoi c'est différent de MyFitnessPal, Yazio ou Lifesum ?</span>
+                        <span data-i18n="faq1_question">En quoi c'est différent de MyFitnessPal, Yazio ou Lifesum
+                            ?</span>
                         <span class="faq-icon">+</span>
                     </div>
-                    <div class="faq-answer">
+                    <div class="faq-answer" data-i18n="faq1_answer">
                         Ces apps suivent un modèle "plan rigide + tracking". Tu dois respecter des calories/macros
-                        fixées à l'avance.
-                        Si tu manges une pizza, tu "casses" ton plan et tu culpabilises.
-                        <br><br>
-                        <strong>Notre approche est radicalement différente :</strong> tu manges ce que tu veux, et
-                        l'app calcule en temps réel
+                        fixées à l'avance. Si tu manges une pizza, tu "casses" ton plan et tu culpabilises. Notre
+                        approche est radicalement différente : tu manges ce que tu veux, et l'app calcule en temps réel
                         ce qu'il faut ajouter pour rester équilibré. Pas de plan figé, pas de culpabilité.
-                        C'est une <strong>compensation dynamique</strong>, pas un régime.
                     </div>
                 </div>
 
@@ -1453,13 +1516,14 @@
                     onkeydown="if(event.key==='Enter' || event.key===' ') toggleFAQ(this)" tabindex="0" role="button"
                     aria-expanded="false">
                     <div class="faq-question">
-                        <span>L'application existe déjà ? Je peux l'essayer maintenant ?</span>
+                        <span data-i18n="faq2_question">L'application existe déjà ? Je peux l'essayer maintenant
+                            ?</span>
                         <span class="faq-icon">+</span>
                     </div>
-                    <div class="faq-answer">
-                        Pas encore. On construit l'app <strong>avec toi</strong>. Dès qu'on atteint 100 inscriptions,
-                        le développement démarre. Les premiers inscrits auront accès en priorité et pourront influencer
-                        les fonctionnalités. Tu es littéralement co-créateur, pas simple utilisateur.
+                    <div class="faq-answer" data-i18n="faq2_answer">
+                        Pas encore. On construit l'app avec toi. Dès qu'on atteint 100 inscriptions, le développement
+                        démarre. Les premiers inscrits auront accès en priorité et pourront influencer les
+                        fonctionnalités. Tu es littéralement co-créateur, pas simple utilisateur.
                     </div>
                 </div>
 
@@ -1469,10 +1533,10 @@
                     onkeydown="if(event.key==='Enter' || event.key===' ') toggleFAQ(this)" tabindex="0" role="button"
                     aria-expanded="false">
                     <div class="faq-question">
-                        <span>Est-ce que ça remplace un diététicien ?</span>
+                        <span data-i18n="faq3_question">Est-ce que ça remplace un diététicien ?</span>
                         <span class="faq-icon">+</span>
                     </div>
-                    <div class="faq-answer">
+                    <div class="faq-answer" data-i18n="faq3_answer">
                         Non. C'est un compagnon du quotidien pour t'aider à faire de meilleurs choix, sans régime
                         strict. Pour un suivi médical personnalisé, consulte toujours un professionnel de santé.
                     </div>
@@ -1482,10 +1546,10 @@
                     onkeydown="if(event.key==='Enter' || event.key===' ') toggleFAQ(this)" tabindex="0" role="button"
                     aria-expanded="false">
                     <div class="faq-question">
-                        <span>Comment sont choisies les recettes ?</span>
+                        <span data-i18n="faq4_question">Comment sont choisies les recettes ?</span>
                         <span class="faq-icon">+</span>
                     </div>
-                    <div class="faq-answer">
+                    <div class="faq-answer" data-i18n="faq4_answer">
                         Elles sont générées selon tes préférences, tes objectifs, tes besoins nutritionnels et tes
                         ingrédients disponibles dans ton frigo. Tout est personnalisé pour toi.
                     </div>
@@ -1495,10 +1559,10 @@
                     onkeydown="if(event.key==='Enter' || event.key===' ') toggleFAQ(this)" tabindex="0" role="button"
                     aria-expanded="false">
                     <div class="faq-question">
-                        <span>Puis-je supprimer mes données ?</span>
+                        <span data-i18n="faq5_question">Puis-je supprimer mes données ?</span>
                         <span class="faq-icon">+</span>
                     </div>
-                    <div class="faq-answer">
+                    <div class="faq-answer" data-i18n="faq5_answer">
                         Oui, à tout moment directement depuis ton compte. Tes données t'appartiennent et nous
                         respectons ta vie privée.
                     </div>
@@ -1508,10 +1572,11 @@
                     onkeydown="if(event.key==='Enter' || event.key===' ') toggleFAQ(this)" tabindex="0" role="button"
                     aria-expanded="false">
                     <div class="faq-question">
-                        <span>Sur quelles plateformes l'application est-elle disponible ?</span>
+                        <span data-i18n="faq6_question">Sur quelles plateformes l'application est-elle disponible
+                            ?</span>
                         <span class="faq-icon">+</span>
                     </div>
-                    <div class="faq-answer">
+                    <div class="faq-answer" data-i18n="faq6_answer">
                         Accessible sur iOS et Android. Une seule application pour tous tes appareils.
                     </div>
                 </div>
@@ -1524,11 +1589,11 @@
         <div class="container-custom">
             <div style="max-width: 600px; margin: 0 auto;">
                 <div class="form-container">
-                    <h2
+                    <h2 data-i18n="form_title"
                         style="font-size: 2rem; font-weight: 700; color: var(--text-dark); margin-bottom: 12px; text-align: center;">
                         Rejoins la liste d'attente
                     </h2>
-                    <p
+                    <p data-i18n="form_subtitle"
                         style="text-align: center; color: var(--text-medium); margin-bottom: 32px; font-size: 1.05rem; line-height: 1.6;">
                         Rejoins la liste d'attente : Inscris-toi pour être notifié du début du développement et tenter
                         d'obtenir une place parmi les 100 premiers utilisateurs qui auront accès gratuit à vie (si
@@ -1538,22 +1603,22 @@
                     <form id="waitlistForm" action="#" method="POST">
                         <!-- Champ Prénom -->
                         <div style="margin-bottom: 20px;">
-                            <label for="fullName"
+                            <label for="fullName" data-i18n="form_firstname_label"
                                 style="display: block; font-weight: 600; margin-bottom: 8px; color: var(--text-dark);">
                                 Prénom
                             </label>
                             <input type="text" id="fullName" name="fullName" required class="form-input"
-                                placeholder="Marie">
+                                placeholder="Marie" data-i18n="form_firstname_placeholder">
                         </div>
 
                         <!-- Champ Email -->
                         <div style="margin-bottom: 20px;">
-                            <label for="email"
+                            <label for="email" data-i18n="form_email_label"
                                 style="display: block; font-weight: 600; margin-bottom: 8px; color: var(--text-dark);">
                                 Email *
                             </label>
                             <input type="email" id="email" name="email" required class="form-input"
-                                placeholder="marie@exemple.com">
+                                placeholder="marie@exemple.com" data-i18n="form_email_placeholder">
                         </div>
 
                         <!-- Consentement -->
@@ -1561,7 +1626,8 @@
                             <label style="display: flex; align-items: start; gap: 12px; cursor: pointer;">
                                 <input type="checkbox" id="consent" name="consent" required
                                     style="margin-top: 4px; width: 20px; height: 20px; accent-color: var(--sage-green);">
-                                <span style="font-size: 0.95rem; color: var(--text-medium);">
+                                <span style="font-size: 0.95rem; color: var(--text-medium);"
+                                    data-i18n="form_consent_label">
                                     Je veux être notifié quand la beta est disponible (désinscription possible à tout
                                     moment)
                                 </span>
@@ -1569,20 +1635,21 @@
                         </div>
 
                         <!-- CTA Button -->
-                        <button type="submit" class="form-button">
+                        <button type="submit" class="form-button" data-i18n="form_submit">
                             Rejoindre la liste d'attente
                         </button>
 
                         <!-- Réassurance -->
-                        <p
+                        <p data-i18n="form_reassurance"
                             style="text-align: center; font-size: 0.875rem; color: var(--text-medium); margin-top: 16px;">
                             ✅ Gratuit • ✅ Sans engagement • ✅ Sois notifié du lancement
                         </p>
 
                         <p
                             style="text-align: center; font-size: 0.875rem; color: var(--text-medium); margin-top: 16px;">
-                            En t'inscrivant, tu acceptes de recevoir des informations sur le développement de
-                            l'app.
+                            <span data-i18n="form_privacy_text">En t'inscrivant, tu acceptes de recevoir des
+                                informations sur le développement de
+                                l'app.</span>
                             <a href="politique-confidentialite.html" target="_blank"
                                 style="color: var(--sage-green); text-decoration: underline;">Politique de
                                 confidentialité</a>
@@ -1597,17 +1664,17 @@
     <footer style="background: white; border-top: 2px solid var(--beige-dark); padding: 32px 0;">
         <div class="container-custom text-center">
             <p style="font-size: 0.875rem; color: var(--text-medium); margin-bottom: 12px;">
-                <a href="politique-confidentialite.html"
+                <a href="politique-confidentialite.html" data-i18n="footer_privacy"
                     style="color: var(--sage-green); text-decoration: none; margin: 0 10px;">Politique de
                     confidentialité</a> |
-                <a href="mentions-legales.html"
+                <a href="mentions-legales.html" data-i18n="footer_legal"
                     style="color: var(--sage-green); text-decoration: none; margin: 0 10px;">Mentions légales</a> |
-                <a href="disclaimer-sante.html"
+                <a href="disclaimer-sante.html" data-i18n="footer_disclaimer"
                     style="color: var(--sage-green); text-decoration: none; margin: 0 10px;">Disclaimer Santé</a>
             </p>
             <p style="font-size: 0.875rem; color: var(--text-medium);">
-                © 2025 Aptaé | <a href="mailto:jennyvgrimm@gmail.com"
-                    style="color: var(--sage-green); text-decoration: none;">Contact</a>
+                <span data-i18n="footer_copyright">© 2025 Aptaé</span> | <a href="mailto:jennyvgrimm@gmail.com"
+                    data-i18n="footer_contact" style="color: var(--sage-green); text-decoration: none;">Contact</a>
             </p>
         </div>
     </footer>
@@ -1628,9 +1695,11 @@
                     </svg>
                 </div>
             </div>
-            <h3>Inscription confirmée !</h3>
-            <p>Merci de ton intérêt ! Tu recevras bientôt un email avec plus d'informations sur la beta privée.</p>
-            <button class="success-modal-close" onclick="closeSuccessModal()">Parfait</button>
+            <h3 data-i18n="modal_success_title">Inscription confirmée !</h3>
+            <p data-i18n="modal_success_text">Merci de ton intérêt ! Tu recevras bientôt un email avec plus
+                d'informations sur la beta privée.</p>
+            <button class="success-modal-close" onclick="closeSuccessModal()"
+                data-i18n="modal_success_button">Parfait</button>
         </div>
     </div>
 
@@ -1652,6 +1721,311 @@
             if (e.key === 'Escape') {
                 closeLightbox();
             }
+        });
+
+        // ========================================
+        // i18n - Language System
+        // ========================================
+
+        const translations = {
+            fr: {
+                // Meta
+                page_title: "Aptaé - L'app nutrition qui te laisse manger ce que tu veux",
+
+                // Header
+                header_cta: "Rejoindre la liste d'attente",
+
+                // Hero
+                hero_title: "Arrête de culpabiliser pour ce que tu manges.",
+                hero_subtitle: "Pizza ce soir ? Parfait. On te suggère juste ce qu'il faut ajouter pour rester équilibré. Sans régime, sans contrainte, sans stress.",
+                hero_cta_primary: "Rejoindre la liste d'attente",
+                hero_cta_secondary: "Voir la roadmap ↓",
+                hero_patent_text: "Une innovation actuellement en cours de brevet 🧠",
+
+                // Form
+                form_title: "Rejoins la liste d'attente",
+                form_subtitle: "Rejoins la liste d'attente : Inscris-toi pour être notifié du début du développement et tenter d'obtenir une place parmi les 100 premiers utilisateurs qui auront accès gratuit à vie (si l'objectif de validation est atteint).",
+                form_firstname_label: "Prénom",
+                form_firstname_placeholder: "Marie",
+                form_email_label: "Email *",
+                form_email_placeholder: "marie@exemple.com",
+                form_consent_label: "Je veux être notifié quand la beta est disponible (désinscription possible à tout moment)",
+                form_submit: "Rejoindre la liste d'attente",
+                form_reassurance: "✅ Gratuit • ✅ Sans engagement • ✅ Sois notifié du lancement",
+                form_privacy_text: "En t'inscrivant, tu acceptes de recevoir des informations sur le développement de l'app.",
+                form_privacy_link: "Politique de confidentialité",
+
+                // Success Modal
+                modal_success_title: "Inscription confirmée !",
+                modal_success_text: "Merci de ton intérêt ! Tu recevras bientôt un email avec plus d'informations sur la beta privée.",
+                modal_success_button: "Parfait",
+
+                // Comparison Section
+                comparison_title: "Pourquoi c'est différent des autres apps nutrition",
+                comparison_subtitle: "Les autres apps t'imposent un régime rigide. Ici, tu manges ce que tu veux, et l'app équilibre le reste pour toi.",
+                comparison_col1_title: "❌ Les autres apps nutrition",
+                comparison_col1_item1_title: "Plan rigide imposé",
+                comparison_col1_item1_desc: "\"Tu dois manger 150g de poulet et 200g de riz\"",
+                comparison_col1_item2_title: "Culpabilité si tu dévies",
+                comparison_col1_item2_desc: "\"Tu as dépassé tes calories, régime cassé\"",
+                comparison_col1_item3_title: "Plan figé sur 7 jours",
+                comparison_col1_item3_desc: "Si ta journée change, le plan ne s'adapte pas",
+                comparison_col2_title: "✅ Cette app",
+                comparison_col2_item1_title: "Tu manges ce que tu veux",
+                comparison_col2_item1_desc: "\"Burger au déjeuner ? Ajoute des légumes ce soir\"",
+                comparison_col2_item2_title: "Compensation, pas jugement",
+                comparison_col2_item2_desc: "\"Il te manque des protéines, voici 3 idées simples\"",
+                comparison_col2_item3_title: "Ajustement en temps réel",
+                comparison_col2_item3_desc: "Sport annulé ? Repas sauté ? Le plan s'adapte automatiquement",
+                comparison_example_title: "📱 Exemple concret d'utilisation",
+                comparison_example_step1_title: "🕐 12h30 - Tu mange des pâtes carbonara",
+                comparison_example_step1_desc: "Beaucoup de lipides, pas de légumes = peu de fibres, glucides OK, protéines probablement insuffisantes pour ce repas.",
+                comparison_example_step2_title: "🔔 16h00 - Notification douce",
+                comparison_example_step2_desc: "\"Ce soir, mise sur des fibres (un légume), une source de protéine et une portion de glucide. Exemples : salade César revisitée, omelette légumes + pain, sauté tofu/poulet + légumes + pâtes.\"",
+                comparison_example_step3_title: "✅ Résultat",
+                comparison_example_step3_desc: "Journée équilibrée, zéro frustration, zéro culpabilité. C'est ça la vraie flexibilité.",
+
+                // Benefits Section
+                benefits_title: "Aptaé au quotidien",
+                benefits_card1_title: "Plan quotidien adapté à ton rythme",
+                benefits_card1_desc: "Que tu travailles, fasses du sport ou que tes journées changent, on s'adapte. Ton plan évolue avec toi, en toute liberté.",
+                benefits_card2_title: "Alerte douce quand il manque un nutriment important",
+                benefits_card2_desc: "Un petit rappel intelligent pour garder l'équilibre sans contrainte. Pas de culpabilité, juste de la bienveillance.",
+                benefits_card3_title: "Recettes compatibles avec tes préférences",
+                benefits_card3_desc: "Végétarien, sans arachides, ou selon tes goûts — tout est ajusté automatiquement. Tes contraintes deviennent des opportunités.",
+                benefits_feature1_title: "Suggestions contextuelles",
+                benefits_feature1_desc: "\"Tu as mangé léger ce midi ? Tu peux te faire plaisir ce soir\"",
+                benefits_feature2_title: "Calcul automatique",
+                benefits_feature2_desc: "L'app analyse tes repas et identifie ce qui manque",
+                benefits_feature3_title: "Ajustement instantané",
+                benefits_feature3_desc: "Sport annulé ? Repas sauté ? Le plan se recalcule",
+
+                // Roadmap Section
+                roadmap_title: "Notre roadmap (100% transparente)",
+                roadmap_phase1_title: "Phase 1 : Validation (0 à 100 inscrits)",
+                roadmap_phase1_desc: "On recueille les 100 premiers emails pour valider votre intérêt. Si on atteint 100 inscriptions, le développement démarre immédiatement.",
+                roadmap_phase2_title: "Phase 2 : Développement (12 semaines)",
+                roadmap_phase2_desc: "Développement du MVP. Les inscrits reçoivent des updates hebdomadaires et peuvent proposer des ajustements.",
+                roadmap_phase3_title: "Phase 3 : Beta privée",
+                roadmap_phase3_desc: "Les 100 premiers inscrits accèdent à la beta (gratuit + accès complet). Tests en conditions réelles, feedback, ajustements.",
+
+                //Footer
+                footer_copyright: "© 2025 Aptaé",
+                footer_privacy: "Politique de confidentialité",
+                footer_legal: "Mentions légales",
+                footer_disclaimer: "Disclaimer Santé",
+                footer_contact: "Contact",
+
+                // Unique Approach Section
+                unique_title: "Ce qui rend cette approche unique",
+                unique_card1_title: "Il apprend de toi",
+                unique_card1_desc: "Plus tu l'utilises, plus il comprend tes besoins et s'adapte à ton rythme de vie réel.",
+                unique_card2_title: "Personnalisé, pas rigide",
+                unique_card2_desc: "Ici, tout est adapté à toi, pas l'inverse. Pas de règles imposées, pas de pression.",
+                unique_card3_title: "Bienveillant par nature",
+                unique_card3_desc: "Une approche qui allie science et simplicité, pour t'aider à manger mieux, à ta manière.",
+
+                // How It Works Section
+                howitworks_title: "Comment ça fonctionne ?",
+                howitworks_step1_title: "Fixe ton objectif",
+                howitworks_step1_desc: "Perte, maintien ou forme physique. Choisis ce qui te correspond vraiment.",
+                howitworks_step2_title: "Répondez à quelques questions",
+                howitworks_step2_desc: "Sur tes habitudes : horaires, préférences alimentaires, activités quotidiennes.",
+                howitworks_step3_title: "Reçois ton plan personnalisé",
+                howitworks_step3_desc: "Simple, flexible et évolutif. Ajuste-le au fil des jours selon tes besoins.",
+
+                // FAQ Section
+                faq_title: "Questions fréquentes",
+                faq1_question: "En quoi c'est différent de MyFitnessPal, Yazio ou Lifesum ?",
+                faq1_answer: "Ces apps suivent un modèle \"plan rigide + tracking\". Tu dois respecter des calories/macros fixées à l'avance. Si tu manges une pizza, tu \"casses\" ton plan et tu culpabilises. Notre approche est radicalement différente : tu manges ce que tu veux, et l'app calcule en temps réel ce qu'il faut ajouter pour rester équilibré. Pas de plan figé, pas de culpabilité.",
+                faq2_question: "L'application existe déjà ? Je peux l'essayer maintenant ?",
+                faq2_answer: "Pas encore. On construit l'app avec toi. Dès qu'on atteint 100 inscriptions, le développement démarre. Les premiers inscrits auront accès en priorité et pourront influencer les fonctionnalités. Tu es littéralement co-créateur, pas simple utilisateur.",
+                faq3_question: "Est-ce que ça remplace un diététicien ?",
+                faq3_answer: "Non. C'est un compagnon du quotidien pour t'aider à faire de meilleurs choix, sans régime strict. Pour un suivi médical personnalisé, consulte toujours un professionnel de santé.",
+                faq4_question: "Comment sont choisies les recettes ?",
+                faq4_answer: "Elles sont générées selon tes préférences, tes objectifs, tes besoins nutritionnels et tes ingrédients disponibles dans ton frigo. Tout est personnalisé pour toi.",
+                faq5_question: "Puis-je supprimer mes données ?",
+                faq5_answer: "Oui, à tout moment directement depuis ton compte. Tes données t'appartiennent et nous respectons ta vie privée.",
+                faq6_question: "Sur quelles plateformes l'application est-elle disponible ?",
+                faq6_answer: "Accessible sur iOS et Android. Une seule application pour tous tes appareils.",
+            },
+            en: {
+                // Meta
+                page_title: "Aptaé - The nutrition app that lets you eat what you want",
+
+                // Header
+                header_cta: "Join the waitlist",
+
+                // Hero  
+                hero_title: "Stop feeling guilty about what you eat.",
+                hero_subtitle: "Pizza tonight? Perfect. We'll just suggest what to add to stay balanced. No diet, no restrictions, no stress.",
+                hero_cta_primary: "Join the waitlist",
+                hero_cta_secondary: "See roadmap ↓",
+                hero_patent_text: "An innovation currently being patented 🧠",
+
+                // Form
+                form_title: "Join the waitlist",
+                form_subtitle: "Join the waitlist: Sign up to be notified when development begins and try to get a spot among the first 100 users who will have lifetime free access (if the validation goal is reached).",
+                form_firstname_label: "First name",
+                form_firstname_placeholder: "Marie",
+                form_email_label: "Email *",
+                form_email_placeholder: "marie@example.com",
+                form_consent_label: "I want to be notified when the beta is available (unsubscribe anytime)",
+                form_submit: "Join the waitlist",
+                form_reassurance: "✅ Free • ✅ No commitment • ✅ Get notified at launch",
+                form_privacy_text: "By signing up, you agree to receive information about the app's development.",
+                form_privacy_link: "Privacy Policy",
+
+                // Success Modal
+                modal_success_title: "Registration confirmed!",
+                modal_success_text: "Thank you for your interest! You'll soon receive an email with more information about the private beta.",
+                modal_success_button: "Perfect",
+
+                // Comparison Section
+                comparison_title: "Why it's different from other nutrition apps",
+                comparison_subtitle: "Other apps impose a rigid diet. Here, you eat what you want, and the app balances the rest for you.",
+                comparison_col1_title: "❌ Other nutrition apps",
+                comparison_col1_item1_title: "Rigid imposed plan",
+                comparison_col1_item1_desc: "\"You must eat 150g chicken and 200g rice\"",
+                comparison_col1_item2_title: "Guilt if you deviate",
+                comparison_col1_item2_desc: "\"You exceeded your calories, diet broken\"",
+                comparison_col1_item3_title: "7-day fixed plan",
+                comparison_col1_item3_desc: "If your day changes, the plan doesn't adapt",
+                comparison_col2_title: "✅ This app",
+                comparison_col2_item1_title: "You eat what you want",
+                comparison_col2_item1_desc: "\"Burger for lunch? Add vegetables tonight\"",
+                comparison_col2_item2_title: "Compensation, not judgment",
+                comparison_col2_item2_desc: "\"You're missing protein, here are 3 simple ideas\"",
+                comparison_col2_item3_title: "Real-time adjustment",
+                comparison_col2_item3_desc: "Workout cancelled? Skipped meal? The plan adapts automatically",
+                comparison_example_title: "📱 Concrete usage example",
+                comparison_example_step1_title: "🕐 12:30 PM - You eat carbonara pasta",
+                comparison_example_step1_desc: "Lots of fat, no vegetables = few fibers, carbs OK, probably insufficient protein for this meal.",
+                comparison_example_step2_title: "🔔 4:00 PM - Gentle notification",
+                comparison_example_step2_desc: "\"Tonight, focus on fiber (a vegetable), a protein source, and a carb portion. Examples: revamped Caesar salad, veggie omelet + bread, tofu/chicken stir-fry + veggies + pasta.\"",
+                comparison_example_step3_title: "✅ Result",
+                comparison_example_step3_desc: "Balanced day, zero frustration, zero guilt. That's true flexibility.",
+
+                // Benefits Section
+                benefits_title: "Aptaé in your daily life",
+                benefits_card1_title: "Daily plan adapted to your rhythm",
+                benefits_card1_desc: "Whether you're working, exercising, or your days change, we adapt. Your plan evolves with you, freely.",
+                benefits_card2_title: "Gentle alert when an important nutrient is missing",
+                benefits_card2_desc: "A smart little reminder to keep balance without constraint. No guilt, just kindness.",
+                benefits_card3_title: "Recipes compatible with your preferences",
+                benefits_card3_desc: "Vegetarian, nut-free, or according to your tastes — everything is adjusted automatically. Your constraints become opportunities.",
+                benefits_feature1_title: "Contextual suggestions",
+                benefits_feature1_desc: "\"You ate light for lunch? You can treat yourself tonight\"",
+                benefits_feature2_title: "Automatic calculation",
+                benefits_feature2_desc: "The app analyzes your meals and identifies what's missing",
+                benefits_feature3_title: "Instant adjustment",
+                benefits_feature3_desc: "Workout cancelled? Skipped meal? The plan recalculates",
+
+                // Roadmap Section
+                roadmap_title: "Our roadmap (100% transparent)",
+                roadmap_phase1_title: "Phase 1: Validation (0 to 100 sign-ups)",
+                roadmap_phase1_desc: "We're collecting the first 100 emails to validate market interest. If we reach 100 registrations, development starts immediately.",
+                roadmap_phase2_title: "Phase 2: Development (12 weeks)",
+                roadmap_phase2_desc: "MVP development. Registered users receive weekly updates and can suggest adjustments.",
+                roadmap_phase3_title: "Phase 3: Private beta",
+                roadmap_phase3_desc: "The first 100 registered users access the beta (free + full access). Real-world testing, feedback, adjustments.",
+
+                // Footer
+                footer_copyright: "© 2025 Aptaé",
+                footer_privacy: "Privacy Policy",
+                footer_legal: "Legal Mentions",
+                footer_disclaimer: "Health Disclaimer",
+                footer_contact: "Contact",
+
+                // Unique Approach Section
+                unique_title: "What makes this approach unique",
+                unique_card1_title: "It learns from you",
+                unique_card1_desc: "The more you use it, the better it understands your needs and adapts to your real lifestyle.",
+                unique_card2_title: "Personalized, not rigid",
+                unique_card2_desc: "Here, everything adapts to you, not the other way around. No imposed rules, no pressure.",
+                unique_card3_title: "Kind by nature",
+                unique_card3_desc: "An approach that combines science and simplicity to help you eat better, your way.",
+
+                // How It Works Section
+                howitworks_title: "How does it work?",
+                howitworks_step1_title: "Set your goal",
+                howitworks_step1_desc: "Weight loss, maintenance, or fitness. Choose what truly fits you.",
+                howitworks_step2_title: "Answer a few questions",
+                howitworks_step2_desc: "About your habits: schedule, food preferences, daily activities.",
+                howitworks_step3_title: "Receive your personalized plan",
+                howitworks_step3_desc: "Simple, flexible, and evolving. Adjust it day by day according to your needs.",
+
+                // FAQ Section
+                faq_title: "Frequently Asked Questions",
+                faq1_question: "How is this different from MyFitnessPal, Yazio, or Lifesum?",
+                faq1_answer: "These apps follow a 'rigid plan + tracking' model. You must stick to preset calories/macros. If you eat pizza, you 'break' your plan and feel guilty. Our approach is radically different: you eat what you want, and the app calculates in real-time what to add to stay balanced. No fixed plan, no guilt.",
+                faq2_question: "Does the app already exist? Can I try it now?",
+                faq2_answer: "Not yet. We're building the app with you. As soon as we reach 100 registrations, development starts. The first registered users will have priority access and can influence the features. You're literally a co-creator, not just a user.",
+                faq3_question: "Does this replace a dietitian?",
+                faq3_answer: "No. It's a daily companion to help you make better choices, without strict diets. For personalized medical follow-up, always consult a health professional.",
+                faq4_question: "How are recipes chosen?",
+                faq4_answer: "They're generated based on your preferences, goals, nutritional needs, and available ingredients in your fridge. Everything is personalized for you.",
+                faq5_question: "Can I delete my data?",
+                faq5_answer: "Yes, at any time directly from your account. Your data belongs to you and we respect your privacy.",
+                faq6_question: "On which platforms is the app available?",
+                faq6_answer: "Accessible on iOS and Android. One app for all your devices.",
+            }
+        };
+
+        // Current language (default: auto-detect or FR)
+        let currentLang = localStorage.getItem('aptae_lang') ||
+            (navigator.language.startsWith('en') ? 'en' : 'fr');
+
+        // Switch language function
+        function switchLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('aptae_lang', lang);
+
+            // Update all elements with data-i18n attribute
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    // Handle different element types
+                    if (element.tagName === 'INPUT' && element.placeholder !== undefined) {
+                        element.placeholder = translations[lang][key];
+                    } else if (element.tagName === 'META') {
+                        element.content = translations[lang][key];
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+
+            // Update footer page links based on language
+            const footerLinks = {
+                privacy: lang === 'fr' ? 'politique-confidentialite.html' : 'privacy-policy.html',
+                legal: lang === 'fr' ? 'mentions-legales.html' : 'legal-mentions.html',
+                disclaimer: lang === 'fr' ? 'disclaimer-sante.html' : 'health-disclaimer.html'
+            };
+
+            document.querySelectorAll('footer a[href*="politique-confidentialite"], footer a[href*="privacy-policy"]').forEach(link => {
+                link.href = footerLinks.privacy;
+            });
+            document.querySelectorAll('footer a[href*="mentions-legales"], footer a[href*="legal-mentions"]').forEach(link => {
+                link.href = footerLinks.legal;
+            });
+            document.querySelectorAll('footer a[href*="disclaimer-sante"], footer a[href*="health-disclaimer"]').forEach(link => {
+                link.href = footerLinks.disclaimer;
+            });
+
+            // Update page title
+            document.title = translations[lang].page_title;
+
+            // Update active language button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById('lang-' + lang).classList.add('active');
+        }
+
+        // Initialize language on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            switchLanguage(currentLang);
         });
 
         // FAQ Toggle
