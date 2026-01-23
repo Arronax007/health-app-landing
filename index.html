@@ -2009,7 +2009,7 @@
                     } else if (element.tagName === 'META') {
                         element.content = translations[lang][key];
                     } else {
-                        element.textContent = translations[lang][key];
+                        element.innerHTML = translations[lang][key];
                     }
                 }
             });
