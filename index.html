@@ -2455,6 +2455,58 @@
             }
         });
     </script>
+
+    <!-- ========================================
+         📊 METRICS TRACKING SYSTEM
+         Invisible pour les visiteurs - Données envoyées vers Google Sheets
+         ======================================== -->
+    <script>
+        // ⚠️ IMPORTANT : Remplacez cette URL par votre URL Google Apps Script
+        // (Après avoir déployé le script, copiez l'URL et collez-la ici)
+        const METRICS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzCqu0m_PibU3Mgg_a0ga5jrVRIg9FUWpkU6d19_462yH28I8y4cV7Gs2gAVGmjeew/exec';
+
+        // Fonction pour envoyer les metrics
+        async function trackPageView() {
+            // Ne pas tracker si l'URL n'est pas configurée
+            if (METRICS_SCRIPT_URL === 'VOTRE_URL_GOOGLE_APPS_SCRIPT_ICI') {
+                console.log('⚠️ Metrics non configurées - Ajoutez l\'URL Google Apps Script');
+                return;
+            }
+
+            try {
+                // Collecter les informations de la visite
+                const metricsData = {
+                    type: 'pageview',
+                    timestamp: new Date().toISOString(),
+                    language: navigator.language || 'fr',
+                    referrer: document.referrer || 'Direct',
+                    userAgent: navigator.userAgent
+                };
+
+                // Envoyer vers Google Sheets
+                await fetch(METRICS_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(metricsData)
+                });
+
+                console.log('✅ Visite enregistrée dans Google Sheets');
+            } catch (error) {
+                console.log('❌ Erreur tracking metrics:', error);
+            }
+        }
+
+        // Tracker la visite au chargement de la page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Attendre 500ms pour éviter de surcharger le chargement initial
+            setTimeout(() => {
+                trackPageView();
+            }, 500);
+        });
+    </script>
 </body>
 
 
